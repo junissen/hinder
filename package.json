@@ -1,0 +1,31 @@
+{
+  "name": "hinder",
+  "version": "1.0.0",
+  "description": "App to bug your friends!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikelsito/hinder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikelsito/hinder/issues"
+  },
+  "homepage": "https://github.com/mikelsito/hinder#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.11",
+    "mocha": "^5.0.4",
+    "mysql2": "^1.5.2",
+    "nightmare": "^3.0.0",
+    "sequelize": "^4.37.0"
+  }
+}
