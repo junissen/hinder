@@ -33,25 +33,28 @@ CREATE TABLE group_category (
 	PRIMARY KEY (id)
 );
 
-CREATE TABLE hinderance (
+CREATE TABLE prank (
 	id INT NOT NULL AUTO_INCREMENT,
 	prank_name VARCHAR(40),
 	prank_complete BOOLEAN DEFAULT FALSE,
 	pranker_id INT,
 	target_id INT,
 	prank_type VARCHAR(40),
-	rating VARCHAR(9),
+	thumbs_up INT(9) DEFAULT 0,
+	thumbs_down INT(9) DEFAULT 0,
+	group_id INT,
 	-- COMMENTS
 	PRIMARY KEY (id),
 	FOREIGN KEY (pranker_id) REFERENCES user(id),
 	FOREIGN KEY (target_id) REFERENCES user(id),
-	FOREIGN KEY (prank_type) REFERENCES prank_category(id)
+	FOREIGN KEY (prank_type) REFERENCES prank_category(id),
+	FOREIGN KEY (group_id) REFERENCES group(id)
 );
 
 CREATE TABLE prank_category (
 	id INT NOT NULL AUTO_INCREMENT,
 	prank_type VARCHAR(40),
-	description VARCHAR (255),
+	asset VARCHAR (255),
 	PRIMARY KEY (id)
 );
 
