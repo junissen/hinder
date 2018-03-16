@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Hinder Login</title>
+        <title>Hinder Sign-up</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,32 +14,71 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
     </head>
     <body>
+        <div class="uk-text-center" uk-grid>
+            <!-- Logo -->
+            <div class="uk-width-expand@m">
+                    <div class="uk-panel uk-padding uk-background-secondary uk-light">
+                        <a class="uk-logo">Welcome to Hinder</a>
+                    </div>
+            </div>
+        </div>
         <!-- signup form -->
         <div class="uk-text-center" uk-grid>
             <form class="uk-grid-small" uk-grid>
+                <!-- user name -->
                 <div class="uk-width-1-1">
                     <input class="uk-input" type="text" placeholder="Full Name">
                 </div>
+                <!-- user profile pic URL -->
+                <div class="uk-width-1-4@s">
+                    <input class="uk-input" type="text" placeholder="Profile Image URL">
+                </div>
+                <!-- user email -->
                 <div class="uk-width-1-2@s">
                     <input class="uk-input" type="text" placeholder="Email">
                 </div>
+                <!-- user phone carrier -->
                 <div class="uk-width-1-4@s">
                     <input class="uk-input" type="text" placeholder="Phone Carrier">
                 </div>
+                <!-- user phone number -->
                 <div class="uk-width-1-4@s">
                     <input class="uk-input" type="text" placeholder="Phone Number">
                 </div>
                 <div class="uk-width-1-2@s">
-                    <input class="uk-input" type="text" placeholder="Group Name">
-                </div>
-                <div class="uk-width-1-2@s">
                     <div class="uk-margin">
-                        <div class="uk-form-controls">
-                            <label><input class="uk-radio" type="radio" name="radio1"> Create a New Group</label><br>
-                            <label><input class="uk-radio" type="radio" name="radio1"> Join an Existing Group</label>
+                        <!-- join existing group -->
+                        <div class="uk-inline">
+                            <button class="uk-button uk-button-default" type="button">Join an Existing Group</button>
+                            <div class="uk-width-large" uk-dropdown>
+                                <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
+                                    <div>
+                                        <ul class="uk-nav uk-dropdown-nav">
+                                            <li class="uk-nav-header">Work Groups</li>
+                                            <li><a href="#">Group A</a></li>
+                                            <li><a href="#">Group B</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul class="uk-nav uk-dropdown-nav">
+                                            <li class="uk-nav-header">Fantasy Leagues</li>
+                                            <li><a href="#">Group A</a></li>
+                                            <li><a href="#">Group B</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- create new group -->
+                        <div class="uk-inline">
+                            <button class="uk-button uk-button-default" type="button">Create a New Group</button>
+                            <div uk-dropdown="mode: click"><input class="uk-input" type="text" placeholder="Group Avatar URL">
+                            </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="uk-width-1-2@s">
                     <div uk-form-custom="target: > * > span:first-child">
@@ -55,6 +94,13 @@
                             <span uk-icon="icon: chevron-down"></span>
                         </button>
                     </div>
+
+
+                    
+                <!-- submit -->
+                <div class="uk-margin">
+                    <button class="uk-button uk-button-primary">Submit</button>
+                </div>
 
                 </div>
             </form>
