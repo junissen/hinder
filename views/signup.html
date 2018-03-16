@@ -14,7 +14,50 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
     </head>
     <body>
+        <!-- signup form -->
         <div class="uk-text-center" uk-grid>
+            <form class="uk-grid-small" uk-grid>
+                <div class="uk-width-1-1">
+                    <input class="uk-input" type="text" placeholder="Full Name">
+                </div>
+                <div class="uk-width-1-2@s">
+                    <input class="uk-input" type="text" placeholder="Email">
+                </div>
+                <div class="uk-width-1-4@s">
+                    <input class="uk-input" type="text" placeholder="Phone Carrier">
+                </div>
+                <div class="uk-width-1-4@s">
+                    <input class="uk-input" type="text" placeholder="Phone Number">
+                </div>
+                <div class="uk-width-1-2@s">
+                    <input class="uk-input" type="text" placeholder="Group Name">
+                </div>
+                <div class="uk-width-1-2@s">
+                    <div class="uk-margin">
+                        <div class="uk-form-controls">
+                            <label><input class="uk-radio" type="radio" name="radio1"> Create a New Group</label><br>
+                            <label><input class="uk-radio" type="radio" name="radio1"> Join an Existing Group</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="uk-width-1-2@s">
+                    <div uk-form-custom="target: > * > span:first-child">
+                        <select>
+                            <option value="">Select a group type</option>
+                            <option value="1">Work</option>
+                            <option value="2">Friends</option>
+                            <option value="3">Team</option>
+                            <option value="4">Fantasy League</option>
+                        </select>
+                        <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                            <span></span>
+                            <span uk-icon="icon: chevron-down"></span>
+                        </button>
+                    </div>
+
+                </div>
+            </form>
         </div>
     </body>
 </html>
