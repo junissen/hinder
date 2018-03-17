@@ -1,0 +1,58 @@
+<html>
+    <header>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/css/uikit.min.css" />
+
+        <!-- UIkit JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+    </header>
+    <body>
+        <!-- This is a button toggling the modal -->
+        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-prank">Been Pranked Modal</button>
+
+        <!-- This is the modal -->
+        <div id="modal-prank" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">PRANKED!!</h2>
+                <p>YOU'VE BEEN PRANKED!</p>
+                <p class="uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">LET ME GO!!!</button>
+                </p>
+            </div>
+        </div>
+            
+        <!-- This is a button toggling the modal -->
+        <button class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #modal-prank-send">New Prank Modal</button>
+
+        <!-- This is the modal -->
+        <div id="modal-prank-send" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h2 class="uk-modal-title">Send A Prank</h2>
+                <form>
+                    <p>Prank Target</p>
+                        <select class="uk-select">
+                            <option>Julia</option>
+                            <option>Eric</option>
+                            <option>Michael</option>
+                            <option>Kayla</option>
+                        </select>
+
+                    <p>Prank Type</p>
+                        <select class="uk-select">
+                            <option>Send a Sound</option>
+                            <option>Send a Photo</option>
+                        </select>
+                </form>
+
+                <p class="uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Bombs Away!!!</button>
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
