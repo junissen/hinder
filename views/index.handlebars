@@ -1,0 +1,23 @@
+<h1>Pranks!</h1>
+
+<h2>Pending Pranks</h2>
+
+<ul>
+  {{#each pranks}}
+    {{#unless prank-complete}}
+      {{> pranks/prank-block prank-complete=false}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Most Recent Pranks!</h2>
+
+<ul>
+  {{#each pranks}}
+    {{#if prank-complete}}
+      {{> pranks/prank-block prank-complete=true}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Stats</h2>
