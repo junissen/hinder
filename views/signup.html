@@ -51,49 +51,38 @@
                         <div class="uk-inline">
                             <button class="uk-button uk-button-default" type="button">Join an Existing Group</button>
                             <div class="uk-width-large" uk-dropdown>
-                                <div class="uk-dropdown-grid uk-child-width-1-2@m" uk-grid>
+                                <div class="uk-dropdown-grid uk-child-width-1-1@m" uk-grid>
                                     <div>
-                                        <ul class="uk-nav uk-dropdown-nav">
-                                            <li class="uk-nav-header">Work Groups</li>
-                                            <li><a href="#">Group A</a></li>
-                                            <li><a href="#">Group B</a></li>
-                                        </ul>
-                                    </div>
-                                    <div>
-                                        <ul class="uk-nav uk-dropdown-nav">
-                                            <li class="uk-nav-header">Fantasy Leagues</li>
-                                            <li><a href="#">Group A</a></li>
-                                            <li><a href="#">Group B</a></li>
-                                        </ul>
+                                        <form class="uk-search uk-search-default">
+                                            <input class="uk-search-input" type="search" placeholder="Search...">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
-
                         <!-- create new group -->
                         <div class="uk-inline">
                             <button class="uk-button uk-button-default" type="button">Create a New Group</button>
-                            <div uk-dropdown="mode: click"><input class="uk-input" type="text" placeholder="Group Avatar URL">
+                            <div class="uk-width-large" uk-dropdown>
+                                <div class="uk-dropdown-grid uk-child-width-1-1@m" uk-grid>
+                                    <div>
+                                        <ul class="uk-nav uk-dropdown-nav">
+                                            <li><a href="#">Group Avatar</a></li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <ul class="uk-nav uk-dropdown-nav">
+                                            <li class="uk-nav-header">Select a group type</li>
+                                            <li><a href="#">Work</a></li>
+                                            <li><a href="#">Friends</a></li>
+                                            <li><a href="#">Team</a></li>
+                                            <li><a href="#">Fantasy League</a></li>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="uk-width-1-2@s">
-                    <div uk-form-custom="target: > * > span:first-child">
-                        <select>
-                            <option value="">Select a group type</option>
-                            <option value="1">Work</option>
-                            <option value="2">Friends</option>
-                            <option value="3">Team</option>
-                            <option value="4">Fantasy League</option>
-                        </select>
-                        <button class="uk-button uk-button-default" type="button" tabindex="-1">
-                            <span></span>
-                            <span uk-icon="icon: chevron-down"></span>
-                        </button>
-                    </div>
+                
 
 
                     
