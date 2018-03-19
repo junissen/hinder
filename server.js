@@ -7,9 +7,15 @@ var app = express();
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
 
+var db = require("./models");
+
+//------ UNCOMMENT OUT VARIABLE TO POPULATE DATABASE ----------------------
+// var populate = require("./db/seeds.js")
+
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
 // local requirements
 require("./models/api_routes")(app);
@@ -19,6 +25,10 @@ require("./models/html_routes")(app);
 var router = require("./controllers/hinder_controller");
 var exphbs = require("express-handlebars");
 
-app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
+db.sequelize.sync().then(function() {
+	app.listen(PORT, function() {
+		// ------UNCOMMENT OUT FUNCTION TO POPULATE DATABASE -----------------------
+  		// populate();
+		console.log("App listening on PORT: " + PORT);
+	});
 });
