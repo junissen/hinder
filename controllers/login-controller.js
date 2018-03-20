@@ -1,14 +1,17 @@
-// Require express
 
-// var express = require("express");
-
-// var router = express.Router();
 
 // Require hinder_DB
 var db = require("../models");
 
 module.exports = function(app) {
-// Get request to check user login name and password when "LOGIN button is pressed"
+
+
+	// Get login page by render login handlebars
+	app.get("/", function(req, res) {
+    	res.render('login', {})
+      });
+
+	// Get request to check user login name and password when "LOGIN button is pressed"
 
 	app.get("/api/user/check", function(req, res) {
 

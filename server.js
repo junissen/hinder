@@ -18,13 +18,11 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // local requirements
-require("./routes/api_routes")(app);
-require("./routes/html_routes")(app);
 require("./controllers/login-controller")(app);
+require("./controllers/signup-controller")(app);
 
 
 // additional libraries
-// var router = require("./controllers/login-controller.js");
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
