@@ -254,21 +254,6 @@ var populateTables = function populateTables() {
 
 	}
 
-	// Populate hinder table
-
-	for (var i = 0; i < hinderObject.length; i ++) {
-
-		db.hinder.create({
-			category_id: hinderObject[i].category_id,
-			group_id: hinderObject[i].group_id,
-			pranker_id: hinderObject[i].pranker_id,
-			target_id: hinderObject[i].target_id
-		}).then(function(result) {
-			console.log(result)
-		})
-
-	}
-
 	// Populate user table
 
 	for (var i = 0; i < userObject.length; i ++) {
@@ -278,6 +263,22 @@ var populateTables = function populateTables() {
 			password: userObject[i].password,
 			photo: userObject[i].photo,
 			group_id: userObject[i].group_id
+		}).then(function(result) {
+			console.log(result)
+		})
+
+	}
+
+	
+	// Populate hinder table
+
+	for (var i = 0; i < hinderObject.length; i ++) {
+
+		db.hinder.create({
+			category_id: hinderObject[i].category_id,
+			group_id: hinderObject[i].group_id,
+			pranker_id: hinderObject[i].pranker_id,
+			target_id: hinderObject[i].target_id
 		}).then(function(result) {
 			console.log(result)
 		})

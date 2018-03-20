@@ -20,25 +20,20 @@ module.exports = function(sequelize, DataTypes) {
 	hinder.associate = function(models) {
 		hinder.belongsTo(models.hinder_category, {
 			as: 'category'
-		})
-	};
+		});
 
-	hinder.associate = function(models) {
 		hinder.belongsTo(models.group, {
 			as: 'group'
-		})
-	};
+		});
 
-	hinder.associate = function(models) {
 		hinder.belongsTo(models.user, {
 			as: 'pranker'
-		})
-	};
+		});
 
-	hinder.associate = function(models) {
 		hinder.belongsTo(models.user, {
 			as: 'target'
-		})
+		});
+
 	};
 
 
