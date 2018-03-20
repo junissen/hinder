@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // local requirements
-require("./models/api_routes")(app);
-require("./models/html_routes")(app);
+require("./routes/api_routes")(app);
+require("./routes/html_routes")(app);
 
 // additional libraries
 var router = require("./controllers/hinder_controller");
