@@ -30,13 +30,13 @@ module.exports = function(sequelize, DataTypes) {
 	};
 
 	hinder.associate = function(models) {
-		hinder.belongsTo(models.user {
+		hinder.belongsTo(models.user, {
 			as: 'pranker'
 		})
 	};
 
 	hinder.associate = function(models) {
-		hinder.belongsTo(models.user {
+		hinder.belongsTo(models.user, {
 			as: 'target'
 		})
 	};

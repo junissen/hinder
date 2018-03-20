@@ -5,7 +5,7 @@ var router = express.Router();
 
 // Import the model (user.js) to use its database functions.
 
-var db = require("./models");
+var db = require("../models");
 // var userName = require("../models/user.js");
 // var group = require("../models/group.js");
 // var groupCat = require("../models/group_category.js");
