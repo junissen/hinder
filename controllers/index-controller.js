@@ -1,8 +1,3 @@
-// Require Express
-// var express = require("express");
-
-// var router = express.Router();
-
 // Require hinder_DB
 var db = require("../models");
 
@@ -17,17 +12,34 @@ module.exports = function(app) {
 			where: {
 				group_id: groupId
 			},
-			include: {
+			include: [{
 				model: db.hinder_category,
 				as: 'category',
 				required: true
+			},
+			{
+				model: db.user,
+				as: 'pranker',
+				required: true
+			},
+			{
+				model: db.user,
+				as: 'target',
+				required: true
 			}
-		}).then(function(result) {
-			var hinderObject = {
-				groupHinders: result
-			}
+			]
+			// order: {
+			// 	['created_at', 'DESC']
+			// }
+		})
+			.then(function(pranks) {
 
-			res.json({hinderObject});
-		});
+				console.log(pranks[0].category.dataValues);
+				// res.json(pranks);
+				res.render('index', {
+					pranks: pranks
+				});
+				
+			});
 	});
 }
