@@ -5,34 +5,29 @@ module.exports = function(app) {
 
 	app.get("/signup", function(req, res) {
 
-		var signupObject = {
-			groups: [],
-			group_ids: [],
-			groupCategories: [],
-			groupCategories_id: []
-		}
+		var signupObject = {};
 
 		db.group.findAll({}).then(function(result) {
 
-			for (var i = 0; i < result.length; i ++ ) {
-				signupObject.groups.push(result[i].dataValues.group_name)
-				signupObject.groups_ids.push(result[i].dataValues.id)
-			}
+			signupObject["groups"] = result;
 
-			console.log(signupObject.groups)
-			console.log(signupObject.group_ids)
+			db.group_category.findAll({}).then(function(result) {
+
+				signupObject["categories"] = result;
+
+				res.render('signup', signupObject)
+
+			})
+
+
 		})
-    	
-    	res.render('signup', {});
 
-    	// db.group_category.findAll({}).then(function(result) {
 
-    	// 	for (var i = 0; i < )
-    	// })
     });
 
 
 
 }
+
 
 
