@@ -63,6 +63,41 @@ module.exports = function(app) {
 
     });
 
+    app.get("/api/group/create", function(req, res) {
+    	db.user.findAll({
+			where: {
+				group_name: req.query.group_name
+			}
+		}).then(function(result) {
+
+			if(result.length == 0) {
+				var textObjectNone = {
+					message: 'No group found'
+				} 
+				res.json({textObjectNone})
+			}
+
+			else {
+				var textObjectFound = {
+					message: 'This group name has already been taken'
+				} 
+				res.json({textObjectFound})
+			}
+		});
+    });
+
+    app.post("/api/group/create", function(req, res) {
+
+    	db.group.create({
+    		"group_name": req.body.group_name,
+    		"bio": req.body.bio,
+    		"photo": req.body.photo,
+    		"category_id": req.body.category_id 
+    	}).then(function(result) {
+    		res.json(result)
+    	})
+    })
+
 }
 
 
