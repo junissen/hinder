@@ -27,7 +27,6 @@ module.exports = function(app) {
 		}).then(function(result) {
 
 			if(result.length == 0) {
-				// console.log('no user found')
 				var textObject = {
 					message: 'No user found'
 				} 
