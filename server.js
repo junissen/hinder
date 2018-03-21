@@ -20,6 +20,7 @@ app.use(express.static("public"));
 // local requirements
 require("./controllers/login-controller")(app);
 require("./controllers/signup-controller")(app);
+require("./controllers/index-controller")(app);
 
 
 // additional libraries
