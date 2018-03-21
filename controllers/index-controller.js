@@ -34,8 +34,7 @@ module.exports = function(app) {
 		})
 			.then(function(pranks) {
 
-				console.log(pranks[0].category.dataValues);
-				// res.json(pranks);
+				// Send pranks object to handlebars
 				res.render('index', {
 					pranks: pranks
 				});

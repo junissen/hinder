@@ -21,7 +21,7 @@ app.use(express.static("public"));
 require("./controllers/login-controller")(app);
 require("./controllers/signup-controller")(app);
 require("./controllers/index-controller")(app);
-
+require("./controllers/profile-controller")(app);
 
 // additional libraries
 var exphbs = require("express-handlebars");
