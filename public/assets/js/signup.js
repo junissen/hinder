@@ -10,9 +10,9 @@ $(function() {
 
 		if ( $('#signup_groupChoice').val() == null)  {
 
-			if ($("#signup_newGroupChoice").val() != null) {
-				
-				if ($("signup_groupCategoryChoice").val() == null) {
+			if ($("#signup_newGroupChoice").val() != "") {
+
+				if ($("#signup_groupCategoryChoice").val() == null) {
 					var newDiv = $('<div>');
 					newDiv.addClass('uk-alert-danger uk-width-1-1');
 					newDiv.text("No group category chosen");
@@ -21,7 +21,7 @@ $(function() {
 
 				else {
 					var newGroupData = {
-						group_name: $("#signup_groupCategoryChoice").val(),
+						group_name: $("#signup_newGroupChoice").val(),
 						bio: $("#signup_bio_newGroupChoice").val(),
 						photo: $("#signup_photo_newGroupChoice").val(),
 						category_id: $("#signup_groupCategoryChoice").val(),
@@ -35,8 +35,92 @@ $(function() {
 						phone_carrier: $('#signup_phoneCarrier').val().trim()
 					}
 
+					$.ajax("/api/user/create", {
+						type: 'GET',
+						data: newUserData
+					}).then(function(response) {
+
+						if (response.textObjectNone) {
+
+							$.ajax("/api/group/create", {
+								type: 'POST',
+								data: newGroupData
+							}).then(function(response) {
+								
+								var newGroupName = response.group_name;
+								var newDiv = $('<div>');
+								newDiv.addClass('uk-alert-success uk-width-1-1');
+								newDiv.text("New group " + newGroupName + " successfully created!");
+								$('#signupForm').prepend(newDiv);
+
+								newUserData["group_id"] = response.id;
+
+								$.ajax("/api/user/create", {
+									type: 'GET',
+									data: newUserData
+								}).then(function(response) {
+
+									if (response.textObjectNone) {
+
+										$.ajax("/api/user/create", {
+											type: 'POST',
+											data: newUserData
+										}).then(function(response) {
+											
+											var newUserName = response.user_name;
+											var newDiv = $('<div>');
+											newDiv.addClass('uk-alert-success uk-width-1-1');
+											newDiv.text("New user " + newUserName + " successfully created! Return to login page.");
+											$('#signupForm').prepend(newDiv);
+
+										})
+
+									}
+
+									else {
+
+										var newDiv = $('<div>');
+										newDiv.addClass('uk-alert-danger uk-width-1-1');
+										newDiv.text(response.textObjectFound.message);
+										$('#signupForm').prepend(newDiv);
+										$('#signup_userName').val("");
+										$('#signup_password').val("");
+										$('#signup_profileImage').val("");
+										$('#signup_phoneNumber').val("");
+										$('#signup_phoneCarrier').val("");
+										$('#signup_groupChoice').val("");
+
+									}
+
+								})
+
+							})
+
+						}
+
+						else {
+
+							var newDiv = $('<div>');
+							newDiv.addClass('uk-alert-danger uk-width-1-1');
+							newDiv.text(response.textObjectFound.message);
+							$("#signup_groupCategoryChoice").val("");
+							$("#signup_bio_newGroupChoice").val("");
+							$("#signup_photo_newGroupChoice").val("");
+							$("#signup_groupCategoryChoice").val("");
+						}
+
+
+					});
 
 				}
+
+			}
+
+			else {
+				var newDiv = $('<div>');
+				newDiv.addClass('uk-alert-danger uk-width-1-1');
+				newDiv.text("No group name given");
+				$('#signupForm').prepend(newDiv);
 			}
 
 
@@ -96,7 +180,7 @@ $(function() {
 		}
 
 		
-	})
+	});
 
 	$('#returnLogin').on("click", function(event) {
 
