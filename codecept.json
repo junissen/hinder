@@ -1,0 +1,16 @@
+{
+  "tests": "./*/tests/*",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+    "Nightmare": {
+      "url": "http://localhost:8080",
+      "show": "true",
+      "restart": "false"
+    }
+  },
+  "include": {},
+  "bootstrap": false,
+  "mocha": {},
+  "name": "hinder"
+}
