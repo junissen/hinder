@@ -39,6 +39,13 @@ $(function() {
 				}
 			}
 
+			else {
+				var newDiv = $('<div>');
+				newDiv.addClass('uk-alert-danger uk-width-1-1');
+				newDiv.text("No group name given");
+				$('#signupForm').prepend(newDiv);
+			}
+
 
 
 		}
