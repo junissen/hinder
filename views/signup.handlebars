@@ -9,27 +9,28 @@
     </div>
     <!-- signup form -->
     <div class="uk-text-center" uk-grid>
-        <form class="uk-grid-small" uk-grid>
+        <form class="uk-grid-small" id="signupForm" uk-grid>
             <!-- user name -->
             <div class="uk-width-1-1">
-                <input class="uk-input" type="text" id="fullName" placeholder="Full Name">
+                <input class="uk-input" type="text" id="signup_userName" placeholder="User Name">
+            </div>
+            <!-- user password -->
+            <div class="uk-width-1-4@s">
+                <input class="uk-input" type="text" id="signup_password" placeholder="User password">
             </div>
             <!-- user profile pic URL -->
             <div class="uk-width-1-4@s">
-                <input class="uk-input" type="text" id="profileImage" placeholder="Profile Image URL">
-            </div>
-            <!-- user email -->
-            <div class="uk-width-1-2@s">
-                <input class="uk-input" type="text" id="email" placeholder="Email">
-            </div>
-            <!-- user phone carrier -->
-            <div class="uk-width-1-4@s">
-                <input class="uk-input" type="text" id="phoneCarrier" placeholder="Phone Carrier">
+                <input class="uk-input" type="text" id="signup_profileImage" placeholder="Profile Image URL">
             </div>
             <!-- user phone number -->
             <div class="uk-width-1-4@s">
-                <input class="uk-input" type="text" id="phoneNumber" placeholder="Phone Number">
+                <input class="uk-input" type="text" id="signup_phoneNumber" placeholder="Phone Number">
             </div>
+            <!-- user phone carrier -->
+            <div class="uk-width-1-4@s">
+                <input class="uk-input" type="text" id="signup_phoneCarrier" placeholder="Phone Carrier">
+            </div>
+            
             <div class="uk-width-1-2@s">
                 <div class="uk-margin">
                     <!-- join existing group -->
@@ -38,9 +39,9 @@
                         <div class="uk-width-large" uk-dropdown>
                             <div class="uk-dropdown-grid uk-child-width-1-1@m" uk-grid>
                                 <div>
-                                    <label for='groupChoice'>Existing Groups</label>
-                                    <select class="form-control" id="groupChoice">
-                                        <option value="" selected disabled>Select an option</option>
+                                    <label for='signup_groupChoice'>Existing Groups</label>
+                                    <select class="form-control" id="signup_groupChoice">
+                                        <option value="0" selected disabled>Select an option</option>
                                         {{#each groups}}
                                             {{> signup/signup-block }}
                                         {{/each}}
@@ -67,13 +68,15 @@
                                 </div> --}}
                                 <form class="uk-form">
                                     <div>
-                                        <input type="text" placeholder="Enter new group name" id="newGroupChoice">
+                                        <input type="text" placeholder="Enter group name" id="signup_newGroupChoice">
+                                        <input type="text" placeholder="Enter group bio" id="signup_bio_newGroupChoice">
+                                        <input type="text" placeholder="Enter group photo URL" id="signup_photo_newGroupChoice">
                                     </div>
                     
                                     <div>
-                                        <label for='groupCategoryChoice'>Group Categories</label>
-                                        <select class="form-control" id="groupCategoryChoice">
-                                            <option value="" selected disabled>Select an option</option>
+                                        <label for='signup_groupCategoryChoice'>Group Categories</label>
+                                        <select class="form-control" id="signup_groupCategoryChoice">
+                                            <option value="0" selected disabled>Select an option</option>
                                             {{#each categories}}
                                                 {{> signup/signup-block }}
                                             {{/each}}
@@ -100,8 +103,12 @@
                 
             <!-- submit -->
 
-                <div class="uk-margin">
+                <div class="uk-margin" id="signup_buttonDiv">
                     <button class="uk-button uk-button-primary uk-link" id="submitNewUser">Submit</button>
+                </div>
+
+                <div class="uk-margin" id="login_buttonDiv">
+                    <button class="uk-button uk-button-primary" id="returnLogin">Return to Login</button>
                 </div>
 
 

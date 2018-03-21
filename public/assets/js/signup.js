@@ -1,0 +1,108 @@
+$(function() {
+
+	// On submit button press, create new user database entry and redirect to login page
+	$('#submitNewUser').on("click", function(event) {
+		event.preventDefault();
+
+		// Remove alert if there
+		$('.uk-alert-danger').remove();
+		$('.uk-alert-success').remove();
+
+		if ( $('#signup_groupChoice').val() == null)  {
+
+			if ($("#signup_newGroupChoice").val() != null) {
+				
+				if ($("signup_groupCategoryChoice").val() == null) {
+					var newDiv = $('<div>');
+					newDiv.addClass('uk-alert-danger uk-width-1-1');
+					newDiv.text("No group category chosen");
+					$('#signupForm').prepend(newDiv);
+				}
+
+				else {
+					var newGroupData = {
+						group_name: $("#signup_groupCategoryChoice").val(),
+						bio: $("#signup_bio_newGroupChoice").val(),
+						photo: $("#signup_photo_newGroupChoice").val(),
+						category_id: $("#signup_groupCategoryChoice").val(),
+					}
+
+					var newUserData = {
+						user_name: $('#signup_userName').val().trim(),
+						password: $('#signup_password').val().trim(),
+						photo: $('#signup_profileImage').val().trim(),
+						phone_number: $('#signup_phoneNumber').val().trim(),
+						phone_carrier: $('#signup_phoneCarrier').val().trim()
+					}
+
+
+				}
+			}
+
+
+
+		}
+
+		else if ( $('#signup_groupChoice').val() != null ) {
+
+			var newUserData = {
+				user_name: $('#signup_userName').val().trim(),
+				password: $('#signup_password').val().trim(),
+				photo: $('#signup_profileImage').val().trim(),
+				phone_number: $('#signup_phoneNumber').val().trim(),
+				phone_carrier: $('#signup_phoneCarrier').val().trim(),
+				group_id: $('#signup_groupChoice').val()
+			}
+
+			$.ajax("/api/user/create", {
+				type: 'GET',
+				data: newUserData
+			}).then(function(response) {
+
+				if (response.textObjectNone) {
+
+					$.ajax("/api/user/create", {
+						type: 'POST',
+						data: newUserData
+					}).then(function(response) {
+						
+						var newUserName = response.user_name;
+						var newDiv = $('<div>');
+						newDiv.addClass('uk-alert-success uk-width-1-1');
+						newDiv.text("New user " + newUserName + " successfully created! Return to login page.");
+						$('#signupForm').prepend(newDiv);
+
+					})
+
+				}
+
+				else {
+
+					var newDiv = $('<div>');
+					newDiv.addClass('uk-alert-danger uk-width-1-1');
+					newDiv.text(response.textObjectFound.message);
+					$('#signupForm').prepend(newDiv);
+					$('#signup_userName').val("");
+					$('#signup_password').val("");
+					$('#signup_profileImage').val("");
+					$('#signup_phoneNumber').val("");
+					$('#signup_phoneCarrier').val("");
+					$('#signup_groupChoice').val("");
+
+				}
+
+			})
+
+		}
+
+		
+	})
+
+	$('#returnLogin').on("click", function(event) {
+
+		window.location.href = '../';
+		return false
+
+	})
+
+})
