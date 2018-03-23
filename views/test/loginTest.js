@@ -10,13 +10,13 @@ nightmare
   .wait(2000)
   .screenshot("2.loginError.png")
   // verify can't login without password
-  .type("#userName", "pamBeesly")
+  .type("#login_userName", "pamBeesly")
   .click("#loginButton")
   .wait(2000)
   .screenshot("3.passwordMissing.png")
   // verify can't login without password
-  .type("#userName", "pamBeesly")
-  .type("#userPassword", "pam1234")  
+  .type("#login_userName", "pamBeesly")
+  .type("#login_userPassword", "pam1234")  
   .click("#loginButton")
   .wait(2000)
   .screenshot("4.loginSuccess.png")

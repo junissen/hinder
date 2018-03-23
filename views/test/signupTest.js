@@ -2,33 +2,36 @@ var Nightmare = require("nightmare");
 var nightmare = Nightmare({ show: true });
 
 nightmare
-  // verify signup page loads
-  .goto("http://localhost:8080/signup")
-  .screenshot("1.signupPage.png")
-  // verify can't signup without entry
+  // verify signup link works
+  .goto("http://localhost:8080/")
   .click("#signupButton")
+  .screenshot("1.signupPage.png")
   .wait(2000)
-  .screenshot("2.signupError.png")
-  // fill out the form for an existing group
-  .type("#fullName", "Joe")
-  .type("#profileImage", "google.com")
-  .type("#email", "joe@joe.com")
-  .type("#phoneCarrier", "Verizon")
-  .type("#phoneNumber", "5555555555")
+  // verify can't signup without entry
+  .click("#submitSignup")
   .wait(2000)
+  .screenshot("2.emptySignupError.png")
+  // fill out the form to join an existing group
+  .type("#signup_userName", "JoeShmoe")
+  .type("#signup_password", "joepassword")
+  .type("#signup_profileImage", "google.com")
+  .type("#signup_phoneCarrier", "Verizon")
+  .type("#signup_phoneNumber", "5555555555")
+  .click("#signup_groupChoice")
+  .click("#existingGroup-1")
   .screenshot("3.fullFormFilled.png")
   .wait(2000)
   // submit form 
   .click("#signupButton")
   // verify can't signup with empty fields
-  .type("fullName", "")
-  .type("profileImage", "")
-  .type("email", "")
-  .type("phoneCarrier", "")
-  .type("phoneNumber", "")
-  .click("#signupButton")
-  .wait(2000)
-  .screenshot("4.emptyFormError.png")
+  // .type("fullName", "")
+  // .type("profileImage", "")
+  // .type("email", "")
+  // .type("phoneCarrier", "")
+  // .type("phoneNumber", "")
+  // .click("#signupButton")
+  // .wait(2000)
+  // .screenshot("4.emptyFormError.png")
 
   .evaluate(function() {
   })
