@@ -22,9 +22,10 @@ module.exports = function(app) {
 			.then(function(user) {
 
 				res.render('profile', {
-					user: user
+					user: user[0]
 				})
-				//res.json(user);
+
+				console.log(JSON.parse(JSON.stringify(user)));
 			});
 	});
 }

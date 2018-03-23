@@ -1,15 +1,11 @@
 <h1>
-	{{user_name}}
+	{{user.user_name}}
 </h1>
 
-<img>
-	{{photo}}
-</img>
+<img src="{{user.photo}}" />
 
 <h2>
-	{{group.dataValues.group_name}}
+	{{user.group.dataValues.group_name}}
 </h2>
 
-<img>
-	{{group.dataValues.photo}}
-</img>
+<img src="{{user.group.dataValues.photo}}" />
