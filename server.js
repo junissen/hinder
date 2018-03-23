@@ -22,6 +22,7 @@ require("./controllers/login-controller")(app);
 require("./controllers/signup-controller")(app);
 require("./controllers/index-controller")(app);
 require("./controllers/profile-controller")(app);
+require("./controllers/hinder-controller")(app);
 
 // additional libraries
 var exphbs = require("express-handlebars");
