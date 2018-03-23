@@ -6,39 +6,59 @@ module.exports = function(app) {
 
 	app.get('/home/:id', function(req, res) {
 
-		var groupId = req.params.id;
+		var userId = req.params.id
 
-		db.hinder.findAll({
+		var indexObject = {};
+
+		db.user.findAll({
 			where: {
-				group_id: groupId
+				id: userId
 			},
 			include: [{
-				model: db.hinder_category,
-				as: 'category',
+				model: db.group,
+				as: 'group',
 				required: true
-			},
-			{
-				model: db.user,
-				as: 'pranker',
-				required: true
-			},
-			{
-				model: db.user,
-				as: 'target',
-				required: true
-			}
-			]
-			// order: {
-			// 	['created_at', 'DESC']
-			// }
-		})
-			.then(function(pranks) {
+			}]
+		}).then(function(result) {
 
-				// Send pranks object to handlebars
-				res.render('index', {
-					pranks: pranks
-				});
+			console.log(result)
+
+			indexObject["userInfo"] = result;
+
+			var groupID = result[0].dataValues.group_id;
+
+			
+			db.hinder.findAll({
+				where: {
+					group_id: groupID
+				},
+				include: [{
+					model: db.hinder_category,
+					as: "category",
+					required: true
+				},
+				{
+					model: db.user,
+					as: "pranker",
+					required: true
+				},
+				{
+					model: db.user,
+					as: "target",
+					required: true
+				}
+				]
+				// order: {
+				// 	['created_at', 'DESC']
+				// }
+			}).then(function(result) {
+
+				indexObject["pranks"] = result;
 				
-			});
+				res.render('index', indexObject)
+			})
+		});
+
 	});
+
 }

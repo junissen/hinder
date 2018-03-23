@@ -20,9 +20,10 @@ $(function() {
 			console.log(response)
 
 			if (response.userInfo) {
-				var group_id = response.userInfo.groupID;
+				console.log(response.userInfo)
+				var user_id = response.userInfo.userID;
 
-				window.location.href = '/home/' + group_id;
+				window.location.href = '/home/' + user_id;
 			}
 
 			else {
