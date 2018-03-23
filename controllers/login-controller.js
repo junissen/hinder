@@ -36,7 +36,7 @@ module.exports = function(app) {
 			else {
 				if (result[0].dataValues.password == password) {
 					var userInfo = {
-						groupID: result[0].dataValues.group_id
+						userID: result[0].dataValues.id
 					}
 
 					res.json({userInfo})
