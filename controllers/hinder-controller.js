@@ -3,7 +3,7 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-	// Post a new hinder to db
+	// Get necessary info to post new hinder
 	app.get("/api/hinder/create/:id", function(req, res) {
 
 		var userID = req.params.id;
@@ -42,5 +42,28 @@ module.exports = function(app) {
 			});
 	});
 
+	// Post new hinder to db
+	app.post("/api/hinder/create2/:id", function(req, res) {
+
+		var userID = parseInt(req.params.id);
+
+		db.hinder.create({
+			"category_id": req.body.category_id,
+			"group_id": req.body.group_id,
+			"pranker_id": userID,
+			"target_id": req.body.target_id
+		})
+			.then(function(result) {
+				res.json(result)
+			});
+	});
+
 
 }
+
+
+
+
+
+
+
