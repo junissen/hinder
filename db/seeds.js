@@ -21,43 +21,53 @@ var groupCategoryObject = [
 
 var groupObject = [
 	{
-		group_name: 'Group A',
-		bio: 'Default Group A for Work Groups',
+		group_name: 'The Office',
+		bio: 'We work in Scranton!',
 		photo: 'https://images-production.global.ssl.fastly.net/uploads/photos/file/117262/michae-scott-quotes-5.jpg?auto=compress&crop=top&fit=clip&h=500&q=55&w=698',
 		category_id: 1
 	},
 	{
-		group_name: 'Group B',
-		bio: 'Default Group B for Work Groups',
-		photo: 'https://vignette.wikia.nocookie.net/theoffice/images/c/cd/Dwight_Schrute.jpg/revision/latest?cb=20110105114630',
+		group_name: 'SS',
+		bio: 'We are all in the secret service. Shhh!',
+		photo: 'http://www.abetterinterview.com/wp-content/uploads/2013/02/Interview-Secrets.jpg',
 		category_id: 1
 	},
 	{
-		group_name: 'Group A',
-		bio: 'Default Group A for Fantasy League',
-		photo: 'https://uproxx.files.wordpress.com/2014/09/rafi-the-league.jpg?quality=95&w=650',
+		group_name: 'Friends who love Friends',
+		bio: 'We are a group of friends that love the hit show Friends!',
+		photo: 'https://cdn.business2community.com/wp-content/uploads/2018/01/friends-reunion-series-ftr.jpg',
 		category_id: 2
 	},
 	{
-		group_name: 'Group B',
-		bio: 'Default Group B for Fantasy League',
-		photo: 'https://uproxx.files.wordpress.com/2014/09/andre-the-league-main.jpg?quality=95&w=650&h=433',
-		category_id: 2
+		group_name: 'Arbys Curly Fries',
+		bio: 'We are Arbys Curly Fries, a rough and tough curling team in Minnesota!',
+		photo: 'https://cds.arbys.com/images/menu/snack-curly-fries-1024x557.jpg',
+		category_id: 3
+	},
+	{
+		group_name: 'The League 2.0',
+		bio: 'Have you seen the show The League? Thats a show we like.',
+		photo: 'https://upload.wikimedia.org/wikipedia/en/3/3b/TheLeagueintertitle.png',
+		category_id: 4
 	}
 ]
 
 var hinderCategoryObject = [
 	{
-		hinder_type: 'sound'
+		hinder_type: 'sound',
+		asset: './public/assets/audio/wilhelm.mp3'
 	},
 	{
-		hinder_type: 'photo'
+		hinder_type: 'photo',
+		asset: 'https://sadanduseless.b-cdn.net/wp-content/uploads/2017/03/creepy-trump1.jpg'
 	},
 	{
-		hinder_type: 'gif'
+		hinder_type: 'gif',
+		asset: 'https://media0.giphy.com/media/wdh1SvEn0E06I/giphy.gif'
 	},
 	{
-		hinder_type: 'message'
+		hinder_type: 'message',
+		asset: 'Haha GOT YA!!!!!!!'
 	}
 ];
 
@@ -66,50 +76,58 @@ var hinderObject = [
 		category_id: 1,
 		group_id: 1,
 		pranker_id: 1,
-		target_id: 2
+		target_id: 2,
+		hinder_complete: 0
 	},
 	{
 		category_id: 2,
 		group_id: 1, 
 		pranker_id: 3,
-		target_id: 4
+		target_id: 4,
+		hinder_complete: 1
 	},
 	{
 		category_id: 3,
 		group_id: 2, 
 		pranker_id: 5,
-		target_id: 6
+		target_id: 6,
+		hinder_complete: 0
 	},
 	{
 		category_id: 4,
 		group_id: 2,
 		pranker_id: 7,
-		target_id: 8
+		target_id: 8,
+		hinder_complete: 1
 	},
 	{
 		category_id: 1,
 		group_id: 3,
 		pranker_id: 9,
-		target_id: 10
+		target_id: 10,
+		hinder_complete: 0
 	},
 	{
 		category_id: 2,
 		group_id: 3, 
 		pranker_id: 11,
-		target_id: 12
+		target_id: 12,
+		hinder_complete: 1
 	},
 	{
 		category_id: 3,
 		group_id: 4, 
 		pranker_id: 13,
-		target_id: 14
+		target_id: 14,
+		hinder_complete: 0
 	},
 	{
 		category_id: 4,
 		group_id: 4,
 		pranker_id: 15,
-		target_id: 16
-	}
+		target_id: 16,
+		hinder_complete: 1
+	},
 ];
 
 var userObject = [
@@ -247,7 +265,8 @@ var populateTables = function populateTables() {
 	for (var i = 0; i < hinderCategoryObject.length; i ++) {
 
 		db.hinder_category.create({
-			hinder_type: hinderCategoryObject[i].hinder_type
+			hinder_type: hinderCategoryObject[i].hinder_type,
+			asset: hinderCategoryObject[i].asset
 		}).then(function(result) {
 			console.log(result)
 		})
@@ -278,7 +297,8 @@ var populateTables = function populateTables() {
 			category_id: hinderObject[i].category_id,
 			group_id: hinderObject[i].group_id,
 			pranker_id: hinderObject[i].pranker_id,
-			target_id: hinderObject[i].target_id
+			target_id: hinderObject[i].target_id,
+			hinder_complete: hinderObject[i].hinder_complete
 		}).then(function(result) {
 			console.log(result)
 		})
