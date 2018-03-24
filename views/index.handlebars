@@ -29,8 +29,9 @@
     </div>
 </div>
 
-<!-- sidebar -->
+<!-- page grid -->
 <div class="uk-text-center" uk-grid>
+  <!-- sidebar -->
   <div class="uk-width-1-4@m">
     <!-- group member profile card -->
         <div class="uk-card uk-card-default uk-card-body">
@@ -68,30 +69,79 @@
         </div>
     </div>
   
+  <!-- main responsive div -->
     <div class="uk-width-expand@m">
       <!-- pending pranks card -->
-        <div class="uk-card uk-card-default uk-card-body">
-          <h2>Pending Pranks</h2>
-          <ul>
-        {{#each pranks}}
+        <div class="uk-panel uk-panel-scrollable">
+          <h4>Pending Pranks</h4>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Member Pranked</th>
+                  <th>Prank Sent</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Handlebars populated usernames</td>
+                  <td>Handlebars populated pranks</td>
+              </tr>
+              <tr>
+                  <td>Handlebars populated usernames</td>
+                  <td>Handlebars populated pranks</td>
+              </tr>
+              <tr>
+                  <td>Handlebars populated usernames</td>
+                  <td>Handlebars populated pranks</td>
+              </tr>
+          </tbody>
+      </table>
+
+        <!-- {{#each pranks}}
           {{#unless prank-complete}}
             {{> pranks/prank-block prank-complete=false}}
           {{/unless}}
-        {{/each}}
-      </ul>
+        {{/each}} -->
+
         </div>
-        <div class="uk-card uk-card-default uk-card-body">
-      <h2>Most Recent Pranks!</h2>
-          <ul>
-        {{#each pranks}}
-          {{#if prank-complete}}
-            {{> pranks/prank-block prank-complete=true}}
-          {{/if}}
-        {{/each}}
-      </ul>
-    </div>
+      <!-- Completed Pranks -->
+        <div class="uk-panel uk-panel-scrollable">
+          <h4>Most Recent Pranks</h4>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Pranker</th>
+                  <th>Prank Sent</th>
+                  <th>Member Pranked</th>
+                  <th>Rate It!</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Handlebars populated usernames</td>
+                  <td>Handlebars populated pranks</td>
+                  <td>Handlebars populated usernames</td>
+                  <td>clickable icons</td>
+              </tr>
+              <tr>
+                  <td>Handlebars populated usernames</td>
+                  <td>Handlebars populated pranks</td>
+                  <td>Handlebars populated usernames</td>
+                  <td>clickable icons</td>
+              </tr>
+              <tr>
+                  <td>Handlebars populated usernames</td>
+                  <td>Handlebars populated pranks</td>
+                  <td>Handlebars populated usernames</td>
+                  <td>clickable icons</td>
+              </tr>
+          </tbody>
+      </table>
+        </div>
     </div>
 </div>
+
+<!-- Stats div -->
   <div>
   <ul uk-tab>
       <li><a href="#">Top Rated Prankster</a></li>
