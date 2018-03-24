@@ -18,12 +18,22 @@
 
 <!-- Send A Prank offcanvas page -->
 <div class="uk-offcanvas-content">
+  <button class="uk-button uk-button-primary uk-button-large uk-margin-small-left">Return Home</button>
   <button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage">New Prank</button>
   <div id="offcanvas-usage" uk-offcanvas>
         <div class="uk-offcanvas-bar">
           <button class="uk-offcanvas-close" type="button" uk-close></button>
           <h3>Send a Prank</h3>
-          <p>send prank item...</p>
+          <ul>
+        <li>
+          {{category.dataValues.hinder_type}}
+        </li>
+        <li>
+          {{category.dataValues.asset}}
+        </li>
+        <li>
+          {{target.dataValues.user_name}}
+        </li>
           <button class="uk-button uk-button-danger uk-align-left" type="button">Send Prank</button>
         </div>
     </div>
@@ -33,35 +43,17 @@
 <div class="uk-text-center" uk-grid>
   <!-- sidebar -->
   <div class="uk-width-1-4@m">
-    <!-- group member profile card -->
-        <div class="uk-card uk-card-default uk-card-body uk-height-medium uk-overflow-auto">
-          <p>Group Name</p>
+    <<!-- group member profile card -->
+        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
+          <h4>{{user.group.dataValues.group_name}}</h4>
+
+          <!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
           <ul class="uk-tab-left" uk-tab>
-              <li><div class="uk-thumbnail uk-thumbnail-mini">
+              <li>
+                <div class="uk-thumbnail uk-thumbnail-mini uk-margin-small-bottom">
                   <img src="http://via.placeholder.com/50" alt="Member pic">
                   <figcaption class="uk-thumbnail-caption">
                     <a href="#">Member A</a>
-                  </figcaption>
-                </div>
-              </li>
-              <li><div class="uk-thumbnail uk-thumbnail-mini">
-                  <img src="http://via.placeholder.com/50" alt="Member pic">
-                  <figcaption class="uk-thumbnail-caption">
-                    <a href="#">Member B</a>
-                  </figcaption>
-                </div>
-              </li>
-              <li><div class="uk-thumbnail uk-thumbnail-mini">
-                  <img src="http://via.placeholder.com/50" alt="Member pic">
-                  <figcaption class="uk-thumbnail-caption">
-                    <a href="#">Member C</a>
-                  </figcaption>
-                </div>
-              </li>
-              <li><div class="uk-thumbnail uk-thumbnail-mini">
-                  <img src="http://via.placeholder.com/50" alt="Member pic">
-                  <figcaption class="uk-thumbnail-caption">
-                    <a href="#">Member D</a>
                   </figcaption>
                 </div>
               </li>
@@ -77,19 +69,11 @@
           <table class="uk-table uk-table-striped uk-table-condensed">
             <thead>
               <tr>
-                  <th class="uk-text-bold">Member Pranked</th>
+                  <th class="uk-text-bold">Members Pranked</th>
                   <th class="uk-text-bold">Prank Sent</th>
               </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
-              </tr>
-              <tr>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
-              </tr>
               <tr>
                   <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
                   <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
@@ -117,18 +101,6 @@
               </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="" uk-icon="icon: arrow-up"></a><a href="" uk-icon="icon: arrow-down"></a></td>
-              </tr>
-              <tr>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="" uk-icon="icon: arrow-up"></a><a href="" uk-icon="icon: arrow-down"></a></td>
-              </tr>
               <tr>
                   <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
                   <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>

@@ -17,14 +17,24 @@
 	        <div class="uk-offcanvas-bar">
 	        	<button class="uk-offcanvas-close" type="button" uk-close></button>
 	        	<h3>Send a Prank</h3>
-	        	<p>!Insert prank form here!</p>
+	        	<ul>
+					<li>
+						{{category.dataValues.hinder_type}}
+					</li>
+					<li>
+						{{category.dataValues.asset}}
+					</li>
+					<li>
+						{{target.dataValues.user_name}}
+					</li>
 	        	<button class="uk-button uk-button-danger uk-align-left" type="button">Send Prank</button>
 	        </div>
 	    </div>
-	</div>    
+	</div>
 
-	<!-- sidebar -->
+	<!-- page grid -->
 	<div class="uk-text-center" uk-grid>
+		<!-- sidebar -->
 		<div class="uk-width-1-4@m uk-padding-remove">
 			<!-- group member profile card -->
 	        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
