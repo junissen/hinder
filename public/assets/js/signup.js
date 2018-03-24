@@ -4,11 +4,47 @@ $(function() {
 	$('#submitNewUser').on("click", function(event) {
 		event.preventDefault();
 
+
 		// Remove alert if there
 		$('.uk-alert-danger').remove();
 		$('.uk-alert-success').remove();
 
-		if ( $('#signup_groupChoice').val() == null)  {
+		if ($('#signup_userName').val() == "") {
+			var newDiv = $('<div>');
+			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.text("No user name chosen");
+			$('#signupForm').prepend(newDiv);
+		}
+
+		else if ($('#signup_password').val() == "") {
+			var newDiv = $('<div>');
+			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.text("No password chosen");
+			$('#signupForm').prepend(newDiv);
+		}
+
+		else if ($('#signup_profileImage').val() == "") {
+			var newDiv = $('<div>');
+			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.text("No profile image chosen");
+			$('#signupForm').prepend(newDiv);
+		}
+
+		else if ($('#signup_phoneNumber').val() == "") {
+			var newDiv = $('<div>');
+			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.text("No phone number chosen");
+			$('#signupForm').prepend(newDiv);
+		}
+
+		else if ($('input[name=radioPhone]:checked', '#signup_phoneForm').val() == null) {
+			var newDiv = $('<div>');
+			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.text("No phone carrier selected");
+			$('#signupForm').prepend(newDiv);
+		}
+
+		else if ( $('#signup_groupChoice').val() == null)  {
 
 			if ($("#signup_newGroupChoice").val() != "") {
 
@@ -134,7 +170,7 @@ $(function() {
 				password: $('#signup_password').val().trim(),
 				photo: $('#signup_profileImage').val().trim(),
 				phone_number: $('#signup_phoneNumber').val().trim(),
-				phone_carrier: $('#signup_phoneCarrier').val().trim(),
+				phone_carrier: $('input[name=radioPhone]:checked', '#signup_phoneForm').val().trim(),
 				group_id: $('#signup_groupChoice').val()
 			}
 
