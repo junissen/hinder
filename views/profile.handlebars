@@ -1,3 +1,135 @@
-<body>
-	{{> profiles/profile-block}}
-</body>
+<!-- Top Page Panel -->
+<div class="uk-panel uk-padding-small uk-background-secondary uk-light">
+	<!-- hinder logo -->
+	<div class="uk-container uk-align-left">
+        <img src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="250" border="0">
+    </div>
+	<!-- user login thumbnail -->
+    <div class="uk-container uk-align-right">
+    	<div class="uk-thumbnail uk-thumbnail-small">
+    		<img src="http://via.placeholder.com/150" alt="Member pic">
+    	</div>
+    </div>
+    <!-- username display -->
+    <div class="uk-container uk-align-right">
+    	<h1>Username Home</h1>
+    </div>
+</div>
+<!-- Send A Prank offcanvas page -->
+<div class="uk-offcanvas-content">
+	<button class="uk-button uk-button-primary uk-button-large">Return Home</button>
+	<button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage">New Prank</button>
+	<div id="offcanvas-usage" uk-offcanvas>
+        <div class="uk-offcanvas-bar">
+        	<button class="uk-offcanvas-close" type="button" uk-close></button>
+        	<h3>Send a Prank</h3>
+        	<p>send prank item...</p>
+        	<button class="uk-button uk-button-danger uk-align-left" type="button">Send Prank</button>
+        </div>
+    </div>
+</div>    
+
+<!-- sidebar -->
+<div class="uk-text-center" uk-grid>
+	<div class="uk-width-1-4@m">
+		<!-- group member profile card -->
+        <div class="uk-card uk-card-default uk-card-body">
+        	<p>Group Name</p>
+        	<ul class="uk-tab-left" uk-tab>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member A</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member B</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member C</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member D</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	        </ul>
+        </div>
+    </div>
+	
+    <div class="uk-width-expand@m">
+    	<!-- pending pranks card -->
+        <div class="uk-card uk-card-default uk-card-body">
+        	<h2>Profile Settings</h2>
+        	<ul class="uk-list uk-list-striped">
+			    <li>Username</li>
+			    <li>Userphoto</li>
+			    <li>Group membership</li>
+			    <li>Group photo</li>
+			    <li>Phone carrier</li>
+			    <li>Phone number</li>
+			    <li>Number of pranks sent</li>
+			</ul>
+        </div>
+    </div>
+</div>
+
+<!-- page grid -->
+<div class="uk-text-center" uk-grid>
+	<!-- sidebar -->
+	<div class="uk-width-1-4@m">
+		<!-- group member profile card -->
+        <div class="uk-card uk-card-default uk-card-body">
+        	<p>Group Name</p>
+        	<ul class="uk-tab-left" uk-tab>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member A</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member B</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member C</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	            <li><div class="uk-thumbnail uk-thumbnail-mini">
+		            	<img src="http://via.placeholder.com/50" alt="Member pic">
+		            	<figcaption class="uk-thumbnail-caption">
+		            		<a href="#">Member D</a>
+		            	</figcaption>
+		            </div>
+	            </li>
+	        </ul>
+        </div>
+    </div>
+
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+
+<!-- jQuery JS -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Login page JS file -->
+<script src="../assets/js/login.js"></script>
