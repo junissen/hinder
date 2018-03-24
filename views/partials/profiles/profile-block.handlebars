@@ -1,11 +1,78 @@
-<h1>
-	{{user.user_name}}
-</h1>
+<!-- Top Page Panel -->
+	<div class="uk-panel uk-padding-small uk-padding-remove-bottom uk-margin-small uk-background-secondary uk-light">
+		<!-- hinder logo -->
+		<div class="uk-container uk-align-left uk-padding-small uk-padding-remove-top uk-margin-medium-bottom">
+            <img src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="250" border="0">
+        </div>
+        <!-- username display -->
+        <div class="uk-container uk-align-right uk-position-bottom uk-margin-small-bottom">
+        	<h1>{{user.user_name}} Profile Settings</h1>
+        </div>
+    </div>
+	<!-- Send A Prank offcanvas page -->
+	<div class="uk-offcanvas-content">
+		<button class="uk-button uk-button-primary uk-button-large uk-margin-small-left">Return Home</button>
+		<button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage">New Prank</button>
+		<div id="offcanvas-usage" uk-offcanvas>
+	        <div class="uk-offcanvas-bar">
+	        	<button class="uk-offcanvas-close" type="button" uk-close></button>
+	        	<h3>Send a Prank</h3>
+	        	<p>!Insert prank form here!</p>
+	        	<button class="uk-button uk-button-danger uk-align-left" type="button">Send Prank</button>
+	        </div>
+	    </div>
+	</div>    
 
-<img src="{{user.photo}}" />
+	<!-- sidebar -->
+	<div class="uk-text-center" uk-grid>
+		<div class="uk-width-1-4@m uk-padding-remove">
+			<!-- group member profile card -->
+	        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
+	        	<h4>{{user.group.dataValues.group_name}}</h4>
 
-<h2>
-	{{user.group.dataValues.group_name}}
-</h2>
+	        	<!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
+	        	<ul class="uk-tab-left" uk-tab>
+		            <li>
+			            <div class="uk-thumbnail uk-thumbnail-mini uk-margin-small-bottom">
+			            	<img src="http://via.placeholder.com/50" alt="Member pic">
+			            	<figcaption class="uk-thumbnail-caption">
+			            		<a href="#">Member A</a>
+			            	</figcaption>
+			            </div>
+		            </li>
+		        </ul>
+	        </div>
+	    </div>
+		<!-- user profile -->
+	    <div class="uk-width-expand@m uk-child-width-expand@s" uk-grid>
+	        <div class="uk-padding-remove">
+                <div class="uk-card-small uk-card-default uk-card-body uk-padding-small">
+                	<img class="uk-align-left uk-margin-remove" <img src="{{user.photo}}" alt="Profile photo"/>
+					<ul class="uk-list uk-align-right uk-margin-remove">
+		                <h4 class="uk-text-bold uk-text-left">Member</h4>
+		                <li class="uk-text-left">Username: {{user.user_name}}</li>
+		                <li class="uk-text-left">Pranks sent: handlebars data here</li>
+		            </ul>
+                </div>
+            </div>
+	        <div class="uk-padding-remove">
+                <div class="uk-card-small uk-card-default uk-card-body uk-padding-small">
+                	<img class="uk-align-left uk-margin-remove" <img src="{{user.group.dataValues.photo}}" alt="Group photo"/>
+                	<ul class="uk-list uk-align-right uk-margin-remove">
+		                <h4 class="uk-text-bold uk-text-left">Group Membership</h4>
+		                <li class="uk-text-left">Group name: {{user.group.dataValues.group_name}}</li>
+		                <li class="uk-text-left">Group category: handlebars</li>
+		            </ul>
+                </div>
+		    </div>
+		</div>
+	</div>
 
-<img src="{{user.group.dataValues.photo}}" />
+<!-- UIkit JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+
+<!-- jQuery JS -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Login page JS file -->
+<script src="../assets/js/login.js"></script>
