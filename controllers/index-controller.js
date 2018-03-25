@@ -39,17 +39,42 @@ module.exports = function(app) {
 				attributes: ['id', ['user_name', 'name'], 'photo'],
 				where: {
 					group_id: indexObject.userInfo.group_id,
-					id: {
-						[db.Sequelize.Op.ne]: userId
-					}
+					// id: {
+					// 	[db.Sequelize.Op.ne]: userId
+					// }
 				}	
 			}).then(function(result) {
 
-				indexObject["group_members"] = []
+				indexObject["group_members"] = [];
+
+				var groupObject = {}
 
 				for (var i = 0; i < result.length; i ++ ){
 
-					indexObject.group_members.push(result[i].dataValues)
+					if (result[i].dataValues.id == indexObject.userInfo.id) {
+						groupObject = {
+							'id': result[i].dataValues.id,
+							'name': result[i].dataValues.name,
+							'photo': result[i].dataValues.photo,
+							'userID': indexObject.userInfo.id,
+							'me': true
+						};
+
+						indexObject.group_members.push(groupObject)
+					}
+					
+					else {
+						groupObject = {
+							'id': result[i].dataValues.id,
+							'name': result[i].dataValues.name,
+							'photo': result[i].dataValues.photo,
+							'userID': indexObject.userInfo.id,
+							'me': false
+						};
+
+						indexObject.group_members.push(groupObject)
+
+					}
 				}
 
 				db.hinder.findAll({
@@ -79,17 +104,52 @@ module.exports = function(app) {
 
 					var pranks = [];
 
+
 					for (var i = 0; i < result.length; i ++ ) {
+						var hinder_typeObject = {
+						"sound": false,
+						"photo": false,
+						"gif": false,
+						"message": false,
+						}
+
+						if (result[i].dataValues.category.hinder_type === "sound") {
+							hinder_typeObject.sound = true
+						}
+
+						if (result[i].dataValues.category.hinder_type === "photo") {
+							hinder_typeObject.photo = true
+						}
+
+						if (result[i].dataValues.category.hinder_type === "gif") {
+							hinder_typeObject.gif = true
+						}
+
+						if (result[i].dataValues.category.hinder_type === "message") {
+							hinder_typeObject.message= true
+						}
+
 						var object = {
 							'id': result[i].dataValues.id,
 							'complete': result[i].dataValues.hinder_complete,
 							'thumbs_up': result[i].dataValues.thumbs_up,
 							'thumbs_down': result[i].dataValues.thumbs_down,
+							'pranker': {
+								'id': result[i].dataValues.pranker.id,
+								'name': result[i].dataValues.pranker.user_name,
+								'photo': result[i].dataValues.pranker.photo
+							},
+							'target': {
+								'id': result[i].dataValues.target.id,
+								'name': result[i].dataValues.target.user_name,
+								'photo': result[i].dataValues.target.photo
+							},
 							'hinder_info': {
 								'id': result[i].dataValues.category.id,
 								'hinder_type': result[i].dataValues.category.hinder_type,
 								'asset': result[i].dataValues.category.asset,
-								'created_at': result[i].dataValues.category.created_at
+								'created_at': result[i].dataValues.category.created_at,
+								'hinderObject': hinder_typeObject
 							}
 						}
 
@@ -104,6 +164,48 @@ module.exports = function(app) {
 			});
 
 		});
+
+	});
+
+	app.put("/home/api/thumbsup/update", function(req, res) {
+		
+		db.hinder.update({
+			thumbs_up: req.body.thumbsUp
+		},
+		{
+			where: {
+				id: req.body.id
+			}
+		}).then(function(result) {
+			if (result.changedRows == 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+	          return res.status(404).end();
+	        } 
+	        else {
+	          res.status(200).end();
+	        }
+     	});
+
+	});
+
+	app.put("/home/api/thumbsdown/update", function(req, res) {
+		
+		db.hinder.update({
+			thumbs_down: req.body.thumbsDown
+		},
+		{
+			where: {
+				id: req.body.id
+			}
+		}).then(function(result) {
+			if (result.changedRows == 0) {
+          // If no rows were changed, then the ID must not exist, so 404
+	          return res.status(404).end();
+	        } 
+	        else {
+	          res.status(200).end();
+	        }
+     	});
 
 	});
 

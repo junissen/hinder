@@ -3,22 +3,24 @@
   <!-- hinder logo -->
   <div class="uk-container uk-align-left">
           <img src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="250" border="0">
-      </div>
-  <!-- user login thumbnail -->
-      <div class="uk-container uk-align-right">
-        <div class="uk-thumbnail uk-thumbnail-small">
-          <img src="http://via.placeholder.com/150" alt="Member pic">
-        </div>
-      </div>
-      <!-- username display -->
-      <div class="uk-container uk-align-right">
-        <h1>Username Home</h1>
-      </div>
   </div>
+  <!-- user login thumbnail -->
+
+  <div class="uk-container uk-align-right">
+    <div class="uk-thumbnail uk-thumbnail-small">
+      {{!-- <img src="http://via.placeholder.com/150" alt="Member pic"> --}}
+      <img class="userPhoto" src={{userInfo.photo}} alt="Member pic">
+    </div>
+  </div>
+  <!-- username display -->
+  <div class="uk-container uk-align-right">
+    <h1>{{userInfo.name}} Home</h1>
+  </div>
+</div>
 
 <!-- Send A Prank offcanvas page -->
 <div class="uk-offcanvas-content">
-  <button class="uk-button uk-button-primary uk-button-large uk-margin-small-left">Return Home</button>
+  <button class="uk-button uk-button-primary uk-button-large uk-margin-small-left" id="returnHomeButton">Return Home</button>
   <button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage">New Prank</button>
   <div id="offcanvas-usage" uk-offcanvas>
         <div class="uk-offcanvas-bar">
@@ -43,18 +45,17 @@
 <div class="uk-text-center" uk-grid>
   <!-- sidebar -->
   <div class="uk-width-1-4@m">
-    <<!-- group member profile card -->
+    <!-- group member profile card -->
         <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
-          <h4>{{user.group.dataValues.group_name}}</h4>
+          <h4>{{groupInfo.group_name}}</h4>
 
           <!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
           <ul class="uk-tab-left" uk-tab>
               <li>
                 <div class="uk-thumbnail uk-thumbnail-mini uk-margin-small-bottom">
-                  <img src="http://via.placeholder.com/50" alt="Member pic">
-                  <figcaption class="uk-thumbnail-caption">
-                    <a href="#">Member A</a>
-                  </figcaption>
+                  {{#each group_members}}
+                    {{> index/index-block}}
+                  {{/each}}
                 </div>
               </li>
           </ul>
@@ -69,14 +70,20 @@
           <table class="uk-table uk-table-striped uk-table-condensed">
             <thead>
               <tr>
-                  <th class="uk-text-bold">Members Pranked</th>
+                  <th class="uk-text-bold">Pranker</th>
                   <th class="uk-text-bold">Prank Sent</th>
+                  <th class="uk-text-bold">Member Pranked</th>
               </tr>
           </thead>
           <tbody>
               <tr>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
+
+                  {{#each pranks}}
+                    {{#if complete}}
+                      {{> index/prank-block complete=true}}
+                    {{/if}}
+                  {{/each}}
+
               </tr>
           </tbody>
       </table>
@@ -102,10 +109,13 @@
           </thead>
           <tbody>
               <tr>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="#">Handlebars populated pranks</a></td>
-                  <td class="uk-text-left uk-width-medium">Handlebars populated usernames</td>
-                  <td class="uk-text-left"><a href="" uk-icon="icon: arrow-up"></a><a href="" uk-icon="icon: arrow-down"></a></td>
+
+                  {{#each pranks}}
+                    {{#unless complete}}
+                      {{> index/prank-block complete=false}}
+                    {{/unless}}
+                  {{/each}}
+
               </tr>
           </tbody>
       </table>
@@ -136,4 +146,4 @@
 <!-- jQuery JS -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <!-- Login page JS file -->
-<script src="../assets/js/login.js"></script>
+<script src="../assets/js/index.js"></script>
