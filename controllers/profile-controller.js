@@ -4,10 +4,17 @@ var db = require("../models");
 module.exports = function(app) {
 
 	//GET request for a users profile information
-	app.get('/user/:id', function(req, res) {
+	app.get('/user/:yourid/:otherid?', function(req, res) {
 
-		var userId = req.params.id;
-		console.log("user ID: " + userId);
+		var userId; 
+
+		if (req.params.otherid) {
+			userId = req.params.otherid;
+		}
+
+		else {
+			userId = req.params.yourid;
+		}
 
 		db.user.findAll({
 			where: {
@@ -27,5 +34,6 @@ module.exports = function(app) {
 
 				console.log(JSON.parse(JSON.stringify(user)));
 			});
+	
 	});
 }

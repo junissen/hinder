@@ -55,7 +55,7 @@ var groupObject = [
 var hinderCategoryObject = [
 	{
 		hinder_type: 'sound',
-		asset: './public/assets/audio/wilhelm.mp3'
+		asset: '../assets/audio/wilhelm.mp3'
 	},
 	{
 		hinder_type: 'photo',
@@ -200,7 +200,7 @@ var userObject = [
 	{
 		user_name: 'rafi',
 		password: 'rafi1234',
-		photo: 'http://thirdmonk.net/postcont/2013/10/rafi-the-league-collection-cover.jpg',
+		photo: 'https://i.ytimg.com/vi/2M2PD1qayKo/maxresdefault.jpg',
 		group_id: 3
 	},
 	{
