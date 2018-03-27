@@ -1,7 +1,7 @@
 $(function() {
 
-	// $('#blocker-modal').modal();
-	$('#blocker-modal').modal('show');
+	// $('#blocker-modal').modal('show');
+	// $.UIkit.modal('#prank-modal').show();
 
 	$('.thumbsUp').on("click", function(event) {
 		event.preventDefault();
