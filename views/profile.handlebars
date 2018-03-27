@@ -6,12 +6,12 @@
         </div>
         <!-- username display -->
         <div class="uk-container uk-align-right uk-position-bottom uk-margin-small-bottom">
-        	<h1>{{user.user_name}} Profile Settings</h1>
+        	<h1>{{userInfo.name}} Profile </h1>
         </div>
     </div>
 	<!-- Send A Prank offcanvas page -->
 	<div class="uk-offcanvas-content">
-		<button class="uk-button uk-button-primary uk-button-large uk-margin-small-left">Return Home</button>
+		<button class="uk-button uk-button-primary uk-button-large uk-margin-small-left" id="returnHomeButton_Profile">Return Home</button>
 		<button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage">New Prank</button>
 		<div id="offcanvas-usage" uk-offcanvas>
 	        <div class="uk-offcanvas-bar">
@@ -35,54 +35,90 @@
 	<!-- page grid -->
 	<div class="uk-text-center" uk-grid>
 		<!-- sidebar -->
-		<div class="uk-width-1-4@m uk-padding-remove">
+		<div class="uk-width-1-4@s uk-padding-remove">
 			<!-- group member profile card -->
 	        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
-	        	<h4>{{user.group.dataValues.group_name}}</h4>
+	          <h4>{{groupInfo.group_name}}</h4>
 
-	        	<!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
-	        	<ul class="uk-tab-left" uk-tab>
-		            <li>
-			            <div class="uk-thumbnail uk-thumbnail-mini uk-margin-small-bottom">
-			            	<img src="http://via.placeholder.com/50" alt="Member pic">
-			            	<figcaption class="uk-thumbnail-caption">
-			            		<a href="#">Member A</a>
-			            	</figcaption>
-			            </div>
-		            </li>
-		        </ul>
+	          <!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
+	          <ul class="uk-tab-left" uk-tab>
+	              <li>
+	                <div class="uk-thumbnail uk-thumbnail-mini uk-margin-small-bottom">
+	                  {{#each group_members}}
+	                    {{> profiles/profile-block}}
+	                  {{/each}}
+	                </div>
+	              </li>
+	          </ul>
 	        </div>
 	    </div>
-		<!-- user profile -->
-	    <div class="uk-width-expand@m uk-child-width-expand@s" uk-grid>
-	        <div class="uk-padding-remove">
-                <div class="uk-card-small uk-card-default uk-card-body uk-padding-small">
-                	<img class="uk-align-left uk-margin-remove" <img src="{{user.photo}}" alt="Profile photo"/>
-					<ul class="uk-list uk-align-right uk-margin-remove">
-		                <h4 class="uk-text-bold uk-text-left">Member</h4>
-		                <li class="uk-text-left">Username: {{user.user_name}}</li>
-		                <li class="uk-text-left">Pranks sent: handlebars data here</li>
-		            </ul>
-                </div>
-            </div>
-	        <div class="uk-padding-remove">
-                <div class="uk-card-small uk-card-default uk-card-body uk-padding-small">
-                	<img class="uk-align-left uk-margin-remove" <img src="{{user.group.dataValues.photo}}" alt="Group photo"/>
-                	<ul class="uk-list uk-align-right uk-margin-remove">
-		                <h4 class="uk-text-bold uk-text-left">Group Membership</h4>
-		                <li class="uk-text-left">Group name: {{user.group.dataValues.group_name}}</li>
-		                <li class="uk-text-left">Group category: handlebars</li>
-		            </ul>
-                </div>
-		    </div>
-		</div>
-	</div>
 
-<!-- UIkit JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"></script>
+		<div class="uk-width-1-4@s uk-padding-remove">
+	          <div class="uk-card-small uk-card-default uk-card-body uk-padding-small">
+				<img class="uk-align-left uk-margin-remove" src="{{userInfo.photo}}" alt="Profile photo"/>
+				<ul class="uk-list uk-align-center uk-margin-remove">
+	                <h4 class="uk-text-bold uk-text-center">User</h4>
+	                <li class="uk-text-center">Username: {{userInfo.name}}</li>
+	            </ul>
+	          </div>
 
-<!-- jQuery JS -->
-<script src="https://code.jquery.com/jquery.js"></script>
-<!-- Login page JS file -->
-<script src="../assets/js/login.js"></script>
+	          <div class="uk-card-small uk-card-default uk-card-body uk-padding-small">
+				<img class="uk-align-left uk-margin-remove" src="{{groupInfo.photo}}" alt="Profile photo"/>
+				<ul class="uk-list uk-align-center uk-margin-remove">
+	                <h4 class="uk-text-bold uk-text-center">Group</h4>
+	                <li class="uk-text-center">Group name: {{groupInfo.group_name}}</li>
+	            </ul>
+	          </div>
+	    </div>
+
+
+		<!-- main responsive div -->
+    	<div class="uk-width-expand@m uk-margin-right">
+      <!-- pending pranks card -->
+	        <div class="uk-panel uk-panel-scrollable uk-margin-bottom">
+	          <h4 class="uk-text-bold">Pranks Received</h4>
+	          <table class="uk-table uk-table-striped uk-table-condensed">
+	            <thead>
+	              <tr>
+	                  <th class="uk-text-bold">Pranker</th>
+	                  <th class="uk-text-bold">Prank Sent</th>
+	              </tr>
+	          </thead>
+	          <tbody>
+	              <tr>
+
+	                  {{#each pranks}}
+	                    {{#if target.user}}
+	                      {{> profiles/prank-block-target}}
+	                    {{/if}}
+	                  {{/each}}
+
+	              </tr>
+	          </tbody>
+	      	  </table>
+
+        	</div>
+      <!-- Completed Pranks -->
+        <div class="uk-panel uk-panel-scrollable">
+          <h4 class="uk-text-bold">Pranks Sent</h4>
+          <table class="uk-table uk-table-striped uk-table-condensed">
+            <thead>
+              <tr>
+                  <th class="uk-text-bold">Prank Sent</th>
+                  <th class="uk-text-bold">Member Pranked</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+
+                  {{#each pranks}}
+                    {{#if pranker.user}}
+                      {{> profiles/prank-block-pranker}}
+                    {{/if}}
+                  {{/each}}
+
+              </tr>
+          </tbody>
+      	</table>
+        </div>
+    </div>

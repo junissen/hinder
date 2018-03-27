@@ -1,0 +1,14 @@
+<img class="groupMemberphoto" src={{photo}} alt="Member pic">
+
+{{#if me}} 
+	<figcaption class="uk-thumbnail-caption">
+		<a class="profileLink" data-url="/user{{userID}}">Me</a>
+	</figcaption>
+
+	{{else}}
+	<figcaption class="uk-thumbnail-caption">
+		<a class="profileLink" data-url="/user{{userID}}/{{id}}">{{name}}</a>
+	</figcaption>
+
+
+{{/if}}
