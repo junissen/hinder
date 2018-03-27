@@ -1,0 +1,15 @@
+<td class="uk-text-left">
+		{{#if hinder_info.hinderObject.sound}}
+			<button id="playAudio">Sound was sent<audio id="audioDiv" src={{hinder_info.asset}}></button>
+		{{/if}}
+		{{#if hinder_info.hinderObject.photo}} 
+			<img class='prankPhoto' src={{hinder_info.asset}}> Image sent
+		{{/if}}
+		{{#if hinder_info.hinderObject.gif}} 
+			<img class='prankPhoto' src={{hinder_info.asset}}> Gif sent
+		{{/if}}
+		{{#if hinder_info.hinderObject.message}}
+			<p class="hinderMessage">{{hinder_info.asset}}</p> <p> Message sent </p> 
+		{{/if}}
+</td>
+<td class="uk-text-left uk-width-medium">{{target.name}}</td>

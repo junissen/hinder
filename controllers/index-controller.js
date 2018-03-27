@@ -104,6 +104,8 @@ module.exports = function(app) {
 
 					var pranks = [];
 
+					var pendingPranks = [];
+
 
 					for (var i = 0; i < result.length; i ++ ) {
 						var hinder_typeObject = {
@@ -151,6 +153,10 @@ module.exports = function(app) {
 								'created_at': result[i].dataValues.category.created_at,
 								'hinderObject': hinder_typeObject
 							}
+						}
+
+						if ((object.target.id == userId) && (object.complete == false)) {
+							pendingPranks.push(object)
 						}
 
 						pranks.push(object)

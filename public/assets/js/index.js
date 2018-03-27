@@ -55,7 +55,7 @@ $(function() {
 		return false
 	})	
 
-	$('#returnHomeButton').on("click", function(event) {
+	$('#returnHomeButton_Index').on("click", function(event) {
 		location.reload();
 	})	
 })
