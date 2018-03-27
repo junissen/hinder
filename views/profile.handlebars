@@ -11,23 +11,27 @@
     </div>
 	<!-- Send A Prank offcanvas page -->
 	<div class="uk-offcanvas-content">
-		<button class="uk-button uk-button-primary uk-button-large uk-margin-small-left" id="returnHomeButton_Profile">Return Home</button>
-		<button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage">New Prank</button>
-		<div id="offcanvas-usage" uk-offcanvas>
-	        <div class="uk-offcanvas-bar">
-	        	<button class="uk-offcanvas-close" type="button" uk-close></button>
-	        	<h3>Send a Prank</h3>
-	        	<ul>
-					<li>
-						{{category.dataValues.hinder_type}}
-					</li>
-					<li>
-						{{category.dataValues.asset}}
-					</li>
-					<li>
-						{{target.dataValues.user_name}}
-					</li>
-	        	<button class="uk-button uk-button-danger uk-align-left" type="button">Send Prank</button>
+	  <button class="uk-button uk-button-primary uk-button-large uk-margin-small-left" id="returnHomeButton_Index">Return Home</button>
+	  <button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage" id="newPrankButton">New Prank</button>
+	  <div id="offcanvas-usage" uk-offcanvas>
+	        <div class="uk-offcanvas-bar prankDiv">
+	          <button class="uk-offcanvas-close" type="button" uk-close></button>
+	          <h3>Send a Prank</h3>
+	          <div>
+	              <label for='prankCategory'>What type of prank do you want to send?</label>
+	              <br>
+	              <select class="form-control" id="prankCategory">
+	                  <option value="0" selected disabled>Select an option</option>
+	              </select>
+	              <br>
+	              <label for='prankTarget'>Who do you want to prank?</label>
+	              <br>
+	              <select class="form-control" id="prankTarget">
+	                  <option value="0" selected disabled>Select an option</option>
+	              </select>
+	          </div>
+	          <br>
+	          <button class="uk-button uk-button-danger uk-align-left" type="button" id="submitPrank">Send Prank</button>
 	        </div>
 	    </div>
 	</div>
@@ -38,7 +42,7 @@
 		<div class="uk-width-1-4@s uk-padding-remove">
 			<!-- group member profile card -->
 	        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
-	          <h4>{{groupInfo.group_name}}</h4>
+	          <h4 id="groupCard" data-group="{{groupInfo.group_id}}">{{groupInfo.group_name}}</h4>
 
 	          <!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
 	          <ul class="uk-tab-left" uk-tab>
