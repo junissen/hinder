@@ -68,7 +68,7 @@ $(function() {
 						password: $('#signup_password').val().trim(),
 						photo: $('#signup_profileImage').val().trim(),
 						phone_number: $('#signup_phoneNumber').val().trim(),
-						phone_carrier: $('#signup_phoneCarrier').val().trim()
+						phone_carrier: $('input[name=radioPhone]:checked', '#signup_phoneForm').val().trim()
 					}
 
 					$.ajax("/api/user/create", {
