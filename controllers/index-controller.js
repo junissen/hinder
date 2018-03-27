@@ -164,7 +164,11 @@ module.exports = function(app) {
 
 					indexObject["pranks"] = pranks;
 
-					res.render('index', indexObject)
+					indexObject["pending_pranks"] = pendingPranks;
+
+					res.json(indexObject)
+
+					// res.render('index', indexObject)
 				})
 
 			});
