@@ -1,0 +1,73 @@
+
+<p uk-margin>
+    <a class="uk-button uk-button-default" href="#modal-group-1" uk-toggle>Modal 1</a>
+    <a class="uk-button uk-button-default" href="#modal-group-2" uk-toggle>Modal 2</a>
+</p>
+
+
+<div id="prank-modal" class="uk-modal"> 
+	 
+	<div id="modal-group-1" uk-modal>
+	    <div class="uk-modal-dialog">
+	        <button class="uk-modal-close-default" type="button" uk-close></button>
+	        <div class="uk-modal-header">
+				<h2>{{pranker.name}} sent you a {{hinder_info.hinder_type}}!
+			</div>
+	        <div class="uk-modal-body">
+	           {{#if hinder_info.hinderObject.sound}}
+					<button id="playAudio">Listen up!<audio id="audioDiv" src={{hinder_info.asset}}></button>
+				{{/if}}
+				{{#if hinder_info.hinderObject.photo}} 
+					<img class='prankPhoto' src={{hinder_info.asset}}> 
+				{{/if}}
+				{{#if hinder_info.hinderObject.gif}} 
+					<img class='prankPhoto' src={{hinder_info.asset}}> 
+				{{/if}}
+				{{#if hinder_info.hinderObject.message}}
+					<p class="hinderMessage">{{hinder_info.asset}}</p>
+				{{/if}}
+	        </div>
+	        <div class="uk-modal-footer uk-text-right">
+	            <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+	            <a href="#modal-group-2" class="uk-button uk-button-primary" uk-toggle>Next</a>
+	        </div>
+	    </div>
+	</div>
+
+	<div id="modal-group-2" uk-modal>
+	    <div class="uk-modal-dialog">
+	        <button class="uk-modal-close-default" type="button" uk-close></button>
+	        <div class="uk-modal-header">
+				<h2>{{pranker.name}} sent you a {{hinder_info.hinder_type}}!
+			</div>
+	        <div class="uk-modal-body">
+	        	{{#if hinder_info.hinderObject.sound}}
+					<button id="playAudio">Listen up!<audio id="audioDiv" src={{hinder_info.asset}}></button>
+				{{/if}}
+				{{#if hinder_info.hinderObject.photo}} 
+					<a class="uk-button uk-button-default" href="#modal-media-image" uk-toggle>Image Prank</a>
+				{{/if}}
+				{{#if hinder_info.hinderObject.gif}} 
+					<a class="uk-button uk-button-default" href="#modal-media-image" uk-toggle>Gif Prank</a> 
+				{{/if}}
+				{{#if hinder_info.hinderObject.message}}
+					<p class="hinderMessage">{{hinder_info.asset}}</p>
+				{{/if}}
+                
+	        </div>
+
+	        <div id="modal-media-image" class="uk-flex-top" uk-modal>
+			    <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
+			        <button class="uk-modal-close-outside" type="button" uk-close></button>
+			        <img class='prankPhoto' src={{hinder_info.asset}} alt="Prank Photo">
+			    </div>
+			</div>
+
+	        <div class="uk-modal-footer uk-text-right">
+	        	<a href="#modal-group-1" class="uk-button uk-button-primary" uk-toggle>Previous</a>
+	            <button class="uk-button uk-button-default uk-modal-close" type="button">Close</button>
+	        </div>
+	    </div>
+	</div>
+</div>
+
