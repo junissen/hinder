@@ -43,7 +43,7 @@ module.exports = function(app) {
 	});
 
 	// Post new hinder to db
-	app.post("/api/hinder/create2/:id", function(req, res) {
+	app.post("/api/hinder/create/:id", function(req, res) {
 
 		var userID = parseInt(req.params.id);
 
@@ -52,10 +52,10 @@ module.exports = function(app) {
 			"group_id": req.body.group_id,
 			"pranker_id": userID,
 			"target_id": req.body.target_id
-		})
-			.then(function(result) {
-				res.json(result)
-			});
+		}).then(function(result) {
+			res.json(result)
+		});
+
 	});
 
 
