@@ -1,5 +1,8 @@
 $(function() {
 
+	$('#blocker-modal').modal();
+	$('#blocker-modal').modal('open');
+
 	$('.thumbsUp').on("click", function(event) {
 		event.preventDefault();
 

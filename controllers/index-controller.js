@@ -162,8 +162,6 @@ module.exports = function(app) {
 
 					}
 
-					console.log('My Pending Pranks', myPendingPranks);
-
 					indexObject["pranks"] = pranks;
 
 					indexObject["pending_pranks"] = pendingPranks;
