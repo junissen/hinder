@@ -1,22 +1,24 @@
-<div class="uk-modal-dialog">
-	<div class="uk-modal-header">
-		<h2>{{pranker.name}} sent you a {{hinder_info.hinder_type}}!
-	</div>
-	<div class="uk-modal-body">
-		{{#if hinder_info.hinderObject.sound}}
-			<button id="playAudio">Listen up!<audio id="audioDiv" src={{hinder_info.asset}}></button>
-		{{/if}}
-		{{#if hinder_info.hinderObject.photo}} 
-			<img class='prankPhoto' src={{hinder_info.asset}}> 
-		{{/if}}
-		{{#if hinder_info.hinderObject.gif}} 
-			<img class='prankPhoto' src={{hinder_info.asset}}> 
-		{{/if}}
-		{{#if hinder_info.hinderObject.message}}
-			<p class="hinderMessage">{{hinder_info.asset}}</p>
-		{{/if}}
-	</div>
-	<div class="uk-modal-footer">
-		<button class="uk-button uk-button-default uk-modal-close" type="button">Finished</button>
+<div class="prankModal" uk-modal>
+	<div class="uk-modal-dialog">
+		<div class="uk-modal-header">
+			<h2>{{pranker.name}} sent you a {{hinder_info.hinder_type}}!
+		</div>
+		<div class="uk-modal-body">
+			{{#if hinder_info.hinderObject.sound}}
+				<button id="playAudioModal">Listen up!<audio id="audioDivModal" src={{hinder_info.asset}}></button>
+			{{/if}}
+			{{#if hinder_info.hinderObject.photo}} 
+				<img class='prankPhoto' src={{hinder_info.asset}}> 
+			{{/if}}
+			{{#if hinder_info.hinderObject.gif}} 
+				<img class='prankPhoto' src={{hinder_info.asset}}> 
+			{{/if}}
+			{{#if hinder_info.hinderObject.message}}
+				<p class="hinderMessage">{{hinder_info.asset}}</p>
+			{{/if}}
+		</div>
+		<div class="uk-modal-footer">
+			<button class="uk-button uk-button-default uk-modal-close finishButton" type="button" data-id={{id}}>Finished</button>
+		</div>
 	</div>
 </div>

@@ -45,13 +45,6 @@
     </div>
 </div>
 
-<!-- Lock Out Modal -->
-<div id="blocker-modal" uk-modal>
-  {{#each pending_pranks}}
-    {{> pranks/modal-block}}
-  {{/each}}
-</div>
-
 <!-- page grid -->
 <div class="uk-text-center" uk-grid>
   <!-- sidebar -->
@@ -125,7 +118,7 @@
 </div>
 
 <!-- Stats div -->
-  <div class= "uk-margin-left uk-margin-right">
+<div class= "uk-margin-left uk-margin-right">
   <ul uk-tab>
       <li><a href="#">Top Rated Prankster</a></li>
       <li><a href="#">Top Groups</a></li>
@@ -135,4 +128,13 @@
       <li>JS top rated pranksters chart</li>
       <li>JS top rated group chart</li>
   </ul>
+</div>
+
+
+<div id="prankContainer">
+
+  {{#each pending_pranks}}
+    {{> pranks/modal-block}}
+  {{/each}}
+
 </div>
