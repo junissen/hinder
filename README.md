@@ -29,6 +29,8 @@ In addition you can send a prank from here or visit your profile.
 ### Technical Details:
 This is a node.js application with a mysql backend (hosted on Heroku with JAWS) using the Sequelize ORM.
 
+[Current Heroku Link:](https://traband-hinder.herokuapp.com)
+
 We have a multi-page site with a login, sign up, main page and profile pages. The incoming pranks are displayed in a modal on the main page and the send pranks come from a slide in panel on the main page.
 
 The database stores the users, login info, their group memberships and a record of the pranks. We used the Seqeulize ORM and have included a seeds file with demo data for starters.
