@@ -106,7 +106,6 @@ module.exports = function(app) {
 
 					var pendingPranks = [];
 
-
 					for (var i = 0; i < result.length; i ++ ) {
 						var hinder_typeObject = {
 						"sound": false,
@@ -160,6 +159,7 @@ module.exports = function(app) {
 						}
 
 						pranks.push(object)
+
 					}
 
 					indexObject["pranks"] = pranks;
