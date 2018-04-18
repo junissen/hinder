@@ -35,7 +35,7 @@ Or visit group member profile pages by clicking on their name:
 ### Technical Details:
 This is a node.js application with a mysql backend (hosted on Heroku with JAWS) using the Sequelize ORM.
 
-[Current Heroku Link:](https://traband-hinder.herokuapp.com)
+[Current Heroku Link:](https://junissen-hinder-app.herokuapp.com)
 
 We have a multi-page site with a login, sign up, main page and profile pages. The incoming pranks are displayed in a modal on the main page and the send pranks come from a slide in panel on the main page.
 
