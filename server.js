@@ -10,7 +10,7 @@ var PORT = process.env.PORT || 8080;
 var db = require("./models");
 
 //------ UNCOMMENT OUT VARIABLE TO POPULATE DATABASE ----------------------
-// var populate = require("./db/seeds.js")
+var populate = require("./db/seeds.js")
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,7 +33,7 @@ app.set("view engine", "handlebars");
 db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		// ------UNCOMMENT OUT FUNCTION TO POPULATE DATABASE -----------------------
-  		// populate();
+  		populate();
 		console.log("App listening on PORT: " + PORT);
 	});
 });
