@@ -13,20 +13,21 @@ The site loads to a login page.
 
 ![alt text](./notes/readmeDocs/loginPage.png "Login")
 
-The page has a link to the signup page where you can create a new user profile and join an existing group or create a new one.
+The page has a link to the signup page where you can create a new user profile and join an existing group or create a new one. 
 
 ![alt text](./notes/readmeDocs/create_newUser.png "Create New User")
 
 ![alt text](./notes/readmeDocs/signup_Group.png "Join an existing group or create a new one")
 
-
-Once logged in, the main page shows pending and previous pranks and allows members to vote on their favorites. 
+Once logged in, the main page shows pending and previous pranks and allows members to vote on their favorites. Additionally, if the user has pending pranks they will show up as modals upon login.
 
 ![alt text](./notes/readmeDocs/mainPage.png "Main Page")
 
-In addition you can send a prank from here or visit group member profile pages.
+In addition you can send a prank from here by pressing the "Send Prank" button:
 
 ![alt text](./notes/readmeDocs/sendPrank.png "Send Prank")
+
+Or visit group member profile pages by clicking on their name:
 
 ![alt text](./notes/readmeDocs/profilePage.png "Profile Page")
 =========
