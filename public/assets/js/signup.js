@@ -6,29 +6,26 @@ $(function() {
 
 		// Remove modal body if there
 		$('.signupModalBody').empty();
-		$('.alert').remove();
-
+		$('.errorModalBody').empty();
+		
 		if ($('#signup_userName').val() == "") {
-			var newDiv = $('<div>');
-			newDiv.addClass('uk-alert-danger uk-width-1-1');
-			newDiv.text("No user name chosen");
-			$('.submitButtonDiv').prepend(newDiv);
+
+			$('.errorModalBody').append("No user name chosen");
+			$('#errorModal').modal("show");
 		}
 
 		else if ($('#signup_password').val() == "") {
-			var newDiv = $('<div>');
-			newDiv.addClass('alert alert-danger');
-			newDiv.attr("role", "alert");
-			newDiv.text("No password chosen");
-			$('.submitButtonDiv').prepend(newDiv);
+
+			$('.errorModalBody').append("No password chosen");
+			$('#errorModal').modal("show");
+
 		}
 
 		else if ($('#signup_profileImage').val() == "") {
-			var newDiv = $('<div>');
-			newDiv.addClass('alert alert-danger');
-			newDiv.attr("role", "alert");
-			newDiv.text("No profile image chosen");
-			$('.submitButtonDiv').prepend(newDiv);
+
+			$('.errorModalBody').append("No profile image chosen");
+			$('#errorModal').modal("show");
+
 		}
 
 		else if ( $('#signup_groupChoice').val() == null)  {
@@ -36,11 +33,10 @@ $(function() {
 			if ($("#signup_newGroupChoice").val() != "") {
 
 				if ($("#signup_groupCategoryChoice").val() == null) {
-					var newDiv = $('<div>');
-					newDiv.addClass('alert alert-danger');
-					newDiv.attr("role", "alert");
-					newDiv.text("No group category chosen");
-					$('.submitButtonDiv').prepend(newDiv);
+
+					$('.errorModalBody').append("No group category chosen");
+					$('#errorModal').modal("show");
+
 				}
 
 				else {
@@ -98,11 +94,9 @@ $(function() {
 
 									else {
 
-										var newDiv = $('<div>');
-										newDiv.addClass('alert alert-danger');
-										newDiv.attr("role", "alert");
-										newDiv.text(response.textObjectFound.message);
-										$('.submitButtonDiv').prepend(newDiv);
+										$('.errorModalBody').append(response.textObjectFound.message);
+										$('#errorModal').modal("show");
+
 										$('#signup_userName').val("");
 										$('#signup_password').val("");
 										$('#signup_profileImage').val("");
@@ -117,11 +111,10 @@ $(function() {
 						}
 
 						else {
+							
+							$('.errorModalBody').append(response.textObjectFound.message);
+							$('#errorModal').modal("show");
 
-							var newDiv = $('<div>');
-							newDiv.addClass('alert alert-danger');
-							newDiv.attr("role", "alert");
-							newDiv.text(response.textObjectFound.message);
 							$("#signup_groupCategoryChoice").val("");
 							$("#signup_bio_newGroupChoice").val("");
 							$("#signup_photo_newGroupChoice").val("");
@@ -136,11 +129,10 @@ $(function() {
 			}
 
 			else {
-				var newDiv = $('<div>');
-				newDiv.addClass('alert alert-danger');
-				newDiv.attr("role", "alert");
-				newDiv.text("No group name given");
-				$('.submitButtonDiv').prepend(newDiv);
+
+				$('.errorModalBody').append("No group name given");
+				$('#errorModal').modal("show");
+
 			}
 
 
@@ -181,11 +173,10 @@ $(function() {
 
 				else {
 
-					var newDiv = $('<div>');
-					newDiv.addClass('alert alert-danger');
-					newDiv.attr("role", "alert");
-					newDiv.text(response.textObjectFound.message);
-					$('.submitButtonDiv').prepend(newDiv);
+					$('.errorModalBody').append(response.textObjectFound.message);
+					$('#errorModal').modal("show");
+
+
 					$('#signup_userName').val("");
 					$('#signup_password').val("");
 					$('#signup_profileImage').val("");

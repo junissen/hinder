@@ -75,6 +75,10 @@ $(function() {
 		$('.audioDiv')[0].play()
 	});
 
+	$('.playAudioModal').on("click", function(event) {
+		$('.audioDivModal')[0].play()
+	});
+
 	$('.profileLink').on("click", function(event) {
 		window.location.href = $(this).data("url");
 		return false

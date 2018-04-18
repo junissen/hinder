@@ -1,5 +1,12 @@
 $(function() {
 
+	
+	var pathURL = window.location.pathname;
+
+	var displayedUser = $(".groupMemberCard").find("a[data-url='" + pathURL + "']");
+
+	displayedUser.attr("style", "color: red; font-weight: bold");
+
 
 	$('#returnHomeButton_Profile').on("click", function(event) {
 		var pathArray = window.location.pathname.split( '/' );

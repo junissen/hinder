@@ -1,4 +1,4 @@
-![alt text](./notes/readmeDocs/hinderLogo.png "Hinder")
+![alt text](./notes/readmeDocs/hinder_logo.png "Hinder")
 
 =======
 
@@ -13,15 +13,20 @@ The site loads to a login page.
 
 ![alt text](./notes/readmeDocs/loginPage.png "Login")
 
-The page has a link to the signup page where you can join an existing group or create a new one.
+The page has a link to the signup page where you can create a new user profile and join an existing group or create a new one.
 
-![alt text](./notes/readmeDocs/signupPage.png "Sign Up")
+![alt text](./notes/readmeDocs/create_newUser.png "Create New User")
+
+![alt text](./notes/readmeDocs/signup_Group.png "Join an existing group or create a new one")
+
 
 Once logged in, the main page shows pending and previous pranks and allows members to vote on their favorites. 
 
 ![alt text](./notes/readmeDocs/mainPage.png "Main Page")
 
-In addition you can send a prank from here or visit your profile.
+In addition you can send a prank from here or visit group member profile pages.
+
+![alt text](./notes/readmeDocs/sendPrank.png "Send Prank")
 
 ![alt text](./notes/readmeDocs/profilePage.png "Profile Page")
 =========

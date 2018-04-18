@@ -4,8 +4,7 @@ $(function() {
 	$('#loginButton').on("click", function(event) {
 		event.preventDefault();
 
-		// Remove alert if there
-		$('.alert').remove();
+		$('.errorModalLoginBody').empty();
 
 		var userData = {
 			user_name: $('#login_userName').val().trim(),
@@ -27,11 +26,10 @@ $(function() {
 			}
 
 			else {
-				var newDiv = $('<div>');
-				newDiv.addClass('alert alert-danger');
-				newDiv.attr("role", "alert");
-				newDiv.text(response.textObject.message);
-				$('.loginButtonDiv').prepend(newDiv);
+
+				$('.errorModalLoginBody').append(response.textObject.message);
+				$('#errorModalLogin').modal("show");
+
 				$('#login_userName').val("");
 				$('#login_userPassword').val("");
 			}
