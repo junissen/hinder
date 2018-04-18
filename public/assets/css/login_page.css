@@ -1,0 +1,54 @@
+
+
+html,body {
+	height: 100%;
+    margin:0px;
+    background: url("../images/brickBkgd.jpg") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.loginRow {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.hinderClass {
+	text-align: center;
+}
+
+.loginHeader {
+	color: white;
+	font-family: 'Sedgwick Ave', cursive;
+}
+
+#loginSubHeader {
+	color: white;
+	font-family: 'Raleway', sans-serif;
+}
+
+.loginForm {
+	color: white;
+	font-size: 16px;
+	font-family: 'Sedgwick Ave', cursive;
+}
+
+.loginButtonDiv {
+	text-align: center;
+}
+
+.signupButton {
+	padding: 0px 10px 0px 10px;
+}
+
+.loginButton {
+	color: white;
+	font-size: 20px;
+	font-family: 'Sedgwick Ave', cursive;
+}
+
+.btn-outline-danger {
+	border-radius: 10px;
+	border: 3px solid red;
+}

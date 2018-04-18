@@ -1,127 +1,186 @@
-<!-- Logo Div -->
-<div class="uk-panel uk-padding uk-background-secondary uk-light">
-    <div class="uk-container uk-align-center">
-        <img src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="300" border="0">
+<div class="row signupRow">
+  <div class="col-1">
+  </div>
+  <div class="col-10">
+    <div class="hinderClass">
+      <img class="hinderLogo" src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="400" border="0">
     </div>
+  </div>
+  <div class="col-1">
+  </div>
 </div>
 
-<!-- Sign-up Container -->
-<div class="uk-container uk-margin-large-top">
-    <!-- Sign-up Form -->
-    <div id="signupForm" uk-grid>
-        {{!-- <form class="uk-grid-small" uk-grid> --}}
-            <!-- user name -->
-            <div class="uk-width-1-4@m">
-                <input class="uk-input" type="text" id="signup_userName" placeholder="User Name">
-            </div>
-            <!-- user password -->
-            <div class="uk-width-1-4@m">
-                {{!-- <div class="uk-margin"> --}}
-                    {{!-- <div class="uk-inline"> --}}
-                        <form class="uk-form">
-                            <div class="uk-inline">
-                            {{!-- <div class="uk-form-password"> --}}
-                                <span class="uk-form-icon uk-form-icon-flip " uk-icon="icon: lock"></span>
-                                <input class="uk-input" type="password" placeholder="Password" id='signup_password'>
-                            {{!-- </div> --}}
-                            </div>
-                        </form>
-                   {{!--  </div> --}}
-                {{!-- </div> --}}
-            </div>
-            <!-- user profile pic URL -->
-            <div class="uk-width-1-4@m">
-                <input class="uk-input" type="text" id="signup_profileImage" placeholder="Profile Image URL">
-            </div>
-            <!-- user phone data -->
-            <div class="uk-width-1-4@m">
-                <div class="uk-button-group">
-                    <button class="uk-button uk-button-danger" type="button">Phone Information</button>
-                    <div class="uk-width-medium" uk-dropdown>
-                        <div class="uk-dropdown-grid uk-child-width-1-1@m uk-animation-slide-top-small" uk-grid>
-                            <form id="signup_phoneForm">
-                                <ul class="uk-nav uk-nav-dropdown">
-                                {{!-- User phone number --}}
-                                <li><input class="uk-input" type="text" id="signup_phoneNumber" placeholder="Phone Number"></li>
-                                <label>Carrier</label>
-                                {{!-- User carrier --}}
-                                <li><input type="radio" name="radioPhone" value="verizon" id="verizon"> Verizon</input></li>
-                                <li><input type="radio" name="radioPhone" value="at&t" id="at&t"> AT&T</input></li>
-                                <li><input type="radio" name="radioPhone" value="tmobile" id="tmobile"> T-Mobile</input></li>
-                                <li><input type="radio" name="radioPhone" value="sprint" id="sprint"> Sprint</input></li>
-                                </ul>
-                            </form>
-                       </div>
-                    </div>
-                </div>
-            </div>
+<div class="row signupRow">
+	<div class="col-md-2 col-sm-1 col-1">
+	</div>
 
+	<div class="col-md-8 col-sm-10 col-10">
+		<div class='returnHomeButtonDiv'>
+	    	<button type="button" id="returnHomeButton" class="btn btn-outline-danger returnHomeButton">Return to Login</button>
+	  	</div>
+	 </div>
 
-            <!-- Join existing group -->
-            <div class="uk-width-1-2@s">
-                <div class="uk-block">
-                    <button class="uk-button uk-button-danger uk-align-left" type="button">Join a Group</button>
-                    <div class="uk-width-small" uk-dropdown>
-                        <div class="uk-dropdown-grid uk-child-width-1-1@m uk-animation-slide-top-small" uk-grid>
-                            <div>
-                                <label for='signup_groupChoice'>Existing Groups</label>
-                                {{!-- Existing group drop down form --}}
-                                <select class="form-control" id="signup_groupChoice">
-                                    <option value="0" selected disabled>Select an option</option>
-                                    {{#each groups}}
-                                        {{> signup/signup-block }}
-                                    {{/each}}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+	 <div class="col-md-2 col-sm-1 col-1">
+	</div>
 
-                    <!-- Create new group -->
-                    <button class="uk-button uk-button-danger uk-align-left" type="button">Create a Group</button>
-                    <div class="uk-width-large" uk-dropdown>
-                        <div class="uk-dropdown-grid uk-child-width-1-2@m uk-animation-slide-top-small" uk-grid>
-                            <div>
-                                <ul class="uk-nav uk-nav-dropdown">
-                                    <li class="uk-nav-header">New Group</li>
-                                    {{!-- New group name --}}
-                                    <li><input type="text" id="signup_newGroupChoice" placeholder="Enter name"></li>
-                                    <label for='signup_groupCategoryChoice'>Group Categories</label>
-                                    <select class="form-control" id="signup_groupCategoryChoice">
-                                        {{!-- Group category drop down form --}}
-                                        <option value="0" selected disabled>Select an option</option>
-                                        {{#each categories}}
-                                            {{> signup/signup-block }}
-                                        {{/each}}
-                                    </select>
-                                </ul>
-                            </div>
-                            <div>
-                                <ul class="uk-nav uk-nav-dropdown">
-                                    {{!-- New group bio --}}
-                                    <li class="uk-nav-header"> Group Bio</li>
-                                    <input type="text" placeholder="Tell us about your group" id="signup_bio_newGroupChoice">
-                                    {{!-- New group photo --}}
-                                    <li class="uk-nav-header"> Group Photo</li>
-                                    <input type="text" placeholder="Photo URL" id="signup_photo_newGroupChoice">
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="uk-width-2-2@s uk-clearfix">
-                <div class="uk-block">
-                    <div class="uk-inline uk-align-right">
-                        {{!-- Return to login page button --}}
-                        <button class="uk-button uk-button-primary uk-link" id='returnLogin'>Return to Login</button>
-                    </div>
-                    <div class="uk-inline uk-align-right">
-                        {{!-- Submit button: create new user/group --}}
-                        <button class="uk-button uk-button-primary uk-link" id='submitNewUser'>Submit</button>
-                    </div>
-                </div>
-            </div>
-
-    </div>
 </div>
+
+<div class="row">
+
+	<div class="col-md-2 col-sm-1 col-1">
+	</div>
+
+	<div class="col-md-8 col-sm-10 col-10 headerColumn">
+		<div class="signupHeaderTop">
+			Create a user profile and either join an existing group or make a new group!
+		</div>
+	</div>
+
+	<div class="col-md-2 col-sm-1 col-1">
+	</div>
+
+</div>
+
+
+<div class="row signupRow">
+
+	<div class="col-md-3 col-sm-2 col-2">
+	</div>
+
+	<div class="col-md-6 col-sm-8 col-8">
+
+		<div class="card signupUserCard">
+		  <div class="card-body">
+		    <form>
+		       <h3 class="signupHeader">Create a new user profile</h3> 
+		       <br>
+		       <div class="form-group">
+		        <label class="signupForm" for="signup_userName">Create username</label>
+		        <input type="text" class="form-control" id="signup_userName" placeholder="Enter username">
+		      </div>
+		      <div class="form-group">
+		        <label class="signupForm" for="signup_password">Create password</label>
+		        <input type="password" class="form-control" id="signup_password" placeholder="Enter password">
+		      </div>
+		      <div class="form-group">
+		        <label class="signupForm" for="signup_profileImage">Enter profile photo URL</label>
+		        <input type="text" class="form-control" id="signup_profileImage" placeholder="Enter image URL">
+		      </div>
+		    </form>
+		  </div>
+		</div>
+
+	</div>
+
+	<div class="col-md-3 col-sm-2 col-2">
+	</div>
+
+</div>
+
+<div class="row signupRow">
+
+	<div class="col-md-2 col-sm-1 col-1">
+	</div>
+
+	<div class="col-md-8 col-sm-10 col-10">
+
+		<div class="row">
+
+			<div class="col-md-6 col-sm-12 col-12">
+					
+				<div class="card signupGroupCard">
+				  <div class="card-body">
+				    <form>
+				       <h3 class="signupHeader">Join an existing group</h3> 
+				       <div class="form-group">
+				       		<label class="signupForm"for="signup_groupChoice">Existing Groups</label>
+						    <select class="form-control" id="signup_groupChoice">
+						      <option value="0" selected disabled>Select an option</option>
+						      	{{#each groups}}
+		                        	{{> signup/signup-block }}
+		                    	{{/each}}
+						    </select>
+				      </div>
+				      
+				    </form>
+				  </div>
+				</div>
+
+			</div>
+
+
+			<div class="col-md-6 col-sm-12 col-12">
+
+				<div class="card signupNewGroupCard">
+				  <div class="card-body">
+				    <form>
+				       <h3 class="signupHeader">Create a new group</h3>
+				       <div class="form-group">
+				        <label class="signupForm" for="signup_newGroupChoice">Enter group name</label>
+				        <input type="text" class="form-control" id="signup_newGroupChoice" placeholder="Enter group name">
+				      </div> 
+				      <div class="form-group">
+				        <label class="signupForm" for="signup__bio_newGroupChoice">Enter group bio</label>
+				        <input type="text" class="form-control" id="signup_bio_newGroupChoice" placeholder="Enter group bio">
+				      </div>
+				      <div class="form-group">
+				        <label class="signupForm" for="signup__photo_newGroupChoice">Enter group photo URL</label>
+				        <input type="text" class="form-control" id="signup_photo_newGroupChoice" placeholder="Enter image URL">
+				      </div>
+				      <div class="form-group">
+				       		<label class="signupForm"for="signup_groupCategoryChoice">Select a group category</label>
+						    <select class="form-control" id="signup_groupCategoryChoice">
+						      <option value="0" selected disabled>Select an option</option>
+						      	{{#each categories}}
+		                            {{> signup/signup-block }}
+		                        {{/each}}
+						    </select>
+				      </div> 
+				    </form>
+				  </div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="col-md-2 col-sm-1 col-1">
+	</div>
+
+</div>
+
+<div class="row signupRow">
+	<div class="col-md-2 col-sm-1 col-1">
+	</div>
+
+	<div class="col-md-8 col-sm-10 col-10">
+		<div class='submitButtonDiv'>
+	    	<button type="button" id="submitNewUser" class="btn btn-outline-danger submitButton">Submit</button>
+	  	</div>
+	 </div>
+
+	 <div class="col-md-2 col-sm-1 col-1">
+	</div>
+
+</div>
+
+<div class="modal fade" id="submitNewUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title signupModalTitle" >Success!</h5>
+      </div>
+      <div class="modal-body signupModalBody">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="returntoLoginButton" data-dismiss="modal">Return to Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+	
+

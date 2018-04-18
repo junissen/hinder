@@ -4,44 +4,31 @@ $(function() {
 	$('#submitNewUser').on("click", function(event) {
 		event.preventDefault();
 
-
-		// Remove alert if there
-		$('.uk-alert-danger').remove();
-		$('.uk-alert-success').remove();
+		// Remove modal body if there
+		$('.signupModalBody').empty();
+		$('.alert').remove();
 
 		if ($('#signup_userName').val() == "") {
 			var newDiv = $('<div>');
 			newDiv.addClass('uk-alert-danger uk-width-1-1');
 			newDiv.text("No user name chosen");
-			$('#signupForm').prepend(newDiv);
+			$('.submitButtonDiv').prepend(newDiv);
 		}
 
 		else if ($('#signup_password').val() == "") {
 			var newDiv = $('<div>');
-			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.addClass('alert alert-danger');
+			newDiv.attr("role", "alert");
 			newDiv.text("No password chosen");
-			$('#signupForm').prepend(newDiv);
+			$('.submitButtonDiv').prepend(newDiv);
 		}
 
 		else if ($('#signup_profileImage').val() == "") {
 			var newDiv = $('<div>');
-			newDiv.addClass('uk-alert-danger uk-width-1-1');
+			newDiv.addClass('alert alert-danger');
+			newDiv.attr("role", "alert");
 			newDiv.text("No profile image chosen");
-			$('#signupForm').prepend(newDiv);
-		}
-
-		else if ($('#signup_phoneNumber').val() == "") {
-			var newDiv = $('<div>');
-			newDiv.addClass('uk-alert-danger uk-width-1-1');
-			newDiv.text("No phone number chosen");
-			$('#signupForm').prepend(newDiv);
-		}
-
-		else if ($('input[name=radioPhone]:checked', '#signup_phoneForm').val() == null) {
-			var newDiv = $('<div>');
-			newDiv.addClass('uk-alert-danger uk-width-1-1');
-			newDiv.text("No phone carrier selected");
-			$('#signupForm').prepend(newDiv);
+			$('.submitButtonDiv').prepend(newDiv);
 		}
 
 		else if ( $('#signup_groupChoice').val() == null)  {
@@ -50,9 +37,10 @@ $(function() {
 
 				if ($("#signup_groupCategoryChoice").val() == null) {
 					var newDiv = $('<div>');
-					newDiv.addClass('uk-alert-danger uk-width-1-1');
+					newDiv.addClass('alert alert-danger');
+					newDiv.attr("role", "alert");
 					newDiv.text("No group category chosen");
-					$('#signupForm').prepend(newDiv);
+					$('.submitButtonDiv').prepend(newDiv);
 				}
 
 				else {
@@ -67,8 +55,6 @@ $(function() {
 						user_name: $('#signup_userName').val().trim(),
 						password: $('#signup_password').val().trim(),
 						photo: $('#signup_profileImage').val().trim(),
-						phone_number: $('#signup_phoneNumber').val().trim(),
-						phone_carrier: $('input[name=radioPhone]:checked', '#signup_phoneForm').val().trim()
 					}
 
 					$.ajax("/api/user/create", {
@@ -84,10 +70,6 @@ $(function() {
 							}).then(function(response) {
 								
 								var newGroupName = response.group_name;
-								var newDiv = $('<div>');
-								newDiv.addClass('uk-alert-success uk-width-1-1');
-								newDiv.text("New group " + newGroupName + " successfully created!");
-								$('#signupForm').prepend(newDiv);
 
 								newUserData["group_id"] = response.id;
 
@@ -105,9 +87,10 @@ $(function() {
 											
 											var newUserName = response.user_name;
 											var newDiv = $('<div>');
-											newDiv.addClass('uk-alert-success uk-width-1-1');
-											newDiv.text("New user " + newUserName + " successfully created! Return to login page.");
-											$('#signupForm').prepend(newDiv);
+											newDiv.text("New user " + newUserName + " and new group " + newGroupName + " successfully created! Return to login page.");
+											$('.signupModalBody').append(newDiv);
+
+											$('#submitNewUserModal').modal('show');
 
 										})
 
@@ -116,14 +99,13 @@ $(function() {
 									else {
 
 										var newDiv = $('<div>');
-										newDiv.addClass('uk-alert-danger uk-width-1-1');
+										newDiv.addClass('alert alert-danger');
+										newDiv.attr("role", "alert");
 										newDiv.text(response.textObjectFound.message);
-										$('#signupForm').prepend(newDiv);
+										$('.submitButtonDiv').prepend(newDiv);
 										$('#signup_userName').val("");
 										$('#signup_password').val("");
 										$('#signup_profileImage').val("");
-										$('#signup_phoneNumber').val("");
-										$('#signup_phoneCarrier').val("");
 										$('#signup_groupChoice').val("");
 
 									}
@@ -137,7 +119,8 @@ $(function() {
 						else {
 
 							var newDiv = $('<div>');
-							newDiv.addClass('uk-alert-danger uk-width-1-1');
+							newDiv.addClass('alert alert-danger');
+							newDiv.attr("role", "alert");
 							newDiv.text(response.textObjectFound.message);
 							$("#signup_groupCategoryChoice").val("");
 							$("#signup_bio_newGroupChoice").val("");
@@ -154,9 +137,10 @@ $(function() {
 
 			else {
 				var newDiv = $('<div>');
-				newDiv.addClass('uk-alert-danger uk-width-1-1');
+				newDiv.addClass('alert alert-danger');
+				newDiv.attr("role", "alert");
 				newDiv.text("No group name given");
-				$('#signupForm').prepend(newDiv);
+				$('.submitButtonDiv').prepend(newDiv);
 			}
 
 
@@ -169,8 +153,6 @@ $(function() {
 				user_name: $('#signup_userName').val().trim(),
 				password: $('#signup_password').val().trim(),
 				photo: $('#signup_profileImage').val().trim(),
-				phone_number: $('#signup_phoneNumber').val().trim(),
-				phone_carrier: $('input[name=radioPhone]:checked', '#signup_phoneForm').val().trim(),
 				group_id: $('#signup_groupChoice').val()
 			}
 
@@ -188,9 +170,10 @@ $(function() {
 						
 						var newUserName = response.user_name;
 						var newDiv = $('<div>');
-						newDiv.addClass('uk-alert-success uk-width-1-1');
 						newDiv.text("New user " + newUserName + " successfully created! Return to login page.");
-						$('#signupForm').prepend(newDiv);
+						$('.signupModalBody').append(newDiv);
+
+						$('#submitNewUserModal').modal('show');
 
 					})
 
@@ -199,9 +182,10 @@ $(function() {
 				else {
 
 					var newDiv = $('<div>');
-					newDiv.addClass('uk-alert-danger uk-width-1-1');
+					newDiv.addClass('alert alert-danger');
+					newDiv.attr("role", "alert");
 					newDiv.text(response.textObjectFound.message);
-					$('#signupForm').prepend(newDiv);
+					$('.submitButtonDiv').prepend(newDiv);
 					$('#signup_userName').val("");
 					$('#signup_password').val("");
 					$('#signup_profileImage').val("");
@@ -218,7 +202,14 @@ $(function() {
 		
 	});
 
-	$('#returnLogin').on("click", function(event) {
+	$('#returntoLoginButton').on("click", function(event) {
+
+		window.location.href = '../';
+		return false
+
+	})
+
+	$('#returnHomeButton').on("click", function(event) {
 
 		window.location.href = '../';
 		return false

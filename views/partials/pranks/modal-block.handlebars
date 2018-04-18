@@ -1,9 +1,10 @@
-<div class="prankModal" uk-modal>
-	<div class="uk-modal-dialog">
-		<div class="uk-modal-header">
-			<h2>{{pranker.name}} sent you a {{hinder_info.hinder_type}}!
+<div class="modal pendingPrankModal">
+	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title">{{pranker.name}} sent you a {{hinder_info.hinder_type}}!</h5>
 		</div>
-		<div class="uk-modal-body">
+		<div class="modal-body">
 			{{#if hinder_info.hinderObject.sound}}
 				<button id="playAudioModal">Listen up!<audio id="audioDivModal" src={{hinder_info.asset}}></button>
 			{{/if}}
@@ -17,8 +18,9 @@
 				<p class="hinderMessage">{{hinder_info.asset}}</p>
 			{{/if}}
 		</div>
-		<div class="uk-modal-footer">
-			<button class="uk-button uk-button-default uk-modal-close finishButton" type="button" data-id={{id}}>Finished</button>
+		<div class="modal-footer">
+			<button class="btn btn-outline-danger finishButton" type="button" data-id={{id}}>Finished</button>
 		</div>
+	</div>
 	</div>
 </div>

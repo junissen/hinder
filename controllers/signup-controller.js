@@ -54,8 +54,6 @@ module.exports = function(app) {
     		"user_name": req.body.user_name,
     		"password": req.body.password,
     		"photo": req.body.photo,
-    		"phone_number": req.body.phone_number,
-    		"phone_carrier": req.body.phone_carrier,
     		"group_id": req.body.group_id
     	}).then(function(result) {
     		res.json(result)

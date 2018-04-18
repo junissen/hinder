@@ -5,7 +5,7 @@ $(function() {
 		event.preventDefault();
 
 		// Remove alert if there
-		$('.uk-alert-danger').remove();
+		$('.alert').remove();
 
 		var userData = {
 			user_name: $('#login_userName').val().trim(),
@@ -28,9 +28,10 @@ $(function() {
 
 			else {
 				var newDiv = $('<div>');
-				newDiv.addClass('uk-alert-danger uk-width-1-1');
+				newDiv.addClass('alert alert-danger');
+				newDiv.attr("role", "alert");
 				newDiv.text(response.textObject.message);
-				$('#loginForm').prepend(newDiv);
+				$('.loginButtonDiv').prepend(newDiv);
 				$('#login_userName').val("");
 				$('#login_userPassword').val("");
 			}

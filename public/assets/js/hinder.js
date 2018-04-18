@@ -1,6 +1,6 @@
 $(function() {
 
-	$('#newPrankButton').on("click", function(event) {
+	$('#sendPrankButton').on("click", function(event) {
 		event.preventDefault();
 
 		$('#prankAlert').remove();
@@ -37,7 +37,7 @@ $(function() {
 
 		var pathArray = window.location.pathname.split( '/' );
 		var userID = pathArray[2];
-		var groupID = $('#groupCard').data("group");
+		var groupID = $('#groupCardTitle').data("group");
 
 		var dataObject = {
 			category_id: $('#prankCategory').val(),
@@ -53,22 +53,19 @@ $(function() {
 		}).then(function(response) {
 			console.log(response);
 
-			var newDiv = $('<div>');
-			newDiv.attr("id", "prankAlert")
-			newDiv.addClass('uk-alert-success uk-width-1-1');
-			newDiv.text("Prank sent!");
-			$('.prankDiv').prepend(newDiv);
+			$('.prankModal').modal("hide");
 
-			setTimeout(reloadWindow, 1000);
+			location.reload();
+
+			// var newDiv = $('<div>');
+			// newDiv.attr("id", "prankAlert")
+			// newDiv.addClass('uk-alert-success uk-width-1-1');
+			// newDiv.text("Prank sent!");
+			// $('.prankDiv').prepend(newDiv);
+
+			// setTimeout(reloadWindow, 1000);
 		})
 	});
 
-	$('#closePrank').on("click", function(event) {
-		location.reload();
-	})
-
 });
 
-function reloadWindow() {
-	location.reload();
-}

@@ -1,136 +1,131 @@
-<!-- Top Page Panel -->
-<div class="uk-panel uk-padding-small uk-background-secondary uk-light">
-  <!-- hinder logo -->
-  <div class="uk-container uk-align-left">
-          <img src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="250" border="0">
-  </div>
-  <!-- user login thumbnail -->
-
-  <div class="uk-container uk-align-right">
-    <div class="uk-thumbnail uk-thumbnail-small">
-      {{!-- <img src="http://via.placeholder.com/150" alt="Member pic"> --}}
-      <img class="userPhoto" src={{userInfo.photo}} alt="Member pic">
+<div class="row indexRow">
+  <div class="col-md-4 col-sm-12">
+    <div class="homepageTitle" >
+        {{userInfo.name}} Homepage
+    </div>
+  </div> 
+  <div class="col-md-4 col-sm-12">
+    <div class="hinderClass">
+      <img class="hinderLogo" src="https://fontmeme.com/permalink/180323/50aabc6e80ab2d2c3606770837f97459.png" alt="spray-paint-fonts" alt="Hinder Logo" width="200" border="0">
     </div>
   </div>
-  <!-- username display -->
-  <div class="uk-container uk-align-right">
-    <h1>{{userInfo.name}} Home</h1>
+  <div class="col-md-4 col-sm-12">
+    <form class="form-inline navbarButton">
+        <button class="btn btn-outline-danger" type="button" id="sendPrankButton">Send prank!</button>
+        <button class="btn btn-sm btn-outline-danger" type="button" id="logoutButton">Logout</button>
+    </form>
   </div>
 </div>
 
-<!-- Send A Prank offcanvas page -->
-<div class="uk-offcanvas-content">
-  <!-- Nav Buttons -->
-  <button class="uk-button uk-button-primary uk-button-large uk-margin-small-left" id="returnHomeButton_Index">Return Home</button>
-  <button class="uk-button uk-button-primary uk-button-large uk-margin-small-left" id="returnLogin">Logout</button>
-  <button class="uk-button-large uk-button-danger uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage" id="newPrankButton">New Prank</button>
-  
-  <div id="offcanvas-usage" uk-offcanvas>
-        <div class="uk-offcanvas-bar prankDiv">
-          <button id="closePrank"class="uk-offcanvas-close" type="button" uk-close></button>
-          <h3>Send a Prank</h3>
-          <div>
-              <label for='prankCategory'>What type of prank do you want to send?</label>
-              <br>
-              <select class="form-control" id="prankCategory">
-                  <option value="0" selected disabled>Select an option</option>
-              </select>
-              <br>
-              <label for='prankTarget'>Who do you want to prank?</label>
-              <br>
-              <select class="form-control" id="prankTarget">
-                  <option value="0" selected disabled>Select an option</option>
-              </select>
-          </div>
-          <br>
-          <button class="uk-button uk-button-danger uk-align-left" type="button" id="submitPrank">Send Prank</button>
-        </div>
-    </div>
-</div>
 
-<!-- page grid -->
-<div class="uk-text-center" uk-grid>
-  <!-- sidebar -->
-  <div class="uk-width-1-4@m">
-    <!-- group member profile card -->
-        <div class="uk-card uk-card-small uk-card-default uk-card-body uk-padding-small">
-          <h4 id="groupCard" data-group="{{groupInfo.group_id}}">{{groupInfo.group_name}}</h4>
+<div class="row indexRow">
 
-          <!-- handlebars: all group member names & corresponding photo URLs add to UL?? -->
-          <ul class="uk-tab-left" uk-tab>
-              <li>
-                <div class="uk-thumbnail uk-thumbnail-mini uk-margin-small-bottom">
-                  {{#each group_members}}
-                    {{> index/index-block}}
-                  {{/each}}
-                </div>
-              </li>
-          </ul>
+  <div class="col-md-3 sm-3 -12">
+
+    <div class="row">
+      <div class="col-1">
+      </div>
+
+      <div class="col-10 groupCard">
+        <h5 id="groupCardTitle" data-group="{{groupInfo.group_id}}">{{groupInfo.group_name}}</h5>
+        <div class="memberCards">
+          {{#each group_members}}
+            {{> index/index-block}}
+          {{/each}}
         </div>
+      </div>
+
+      <div class="col-1">
+      </div>
     </div>
-  
-  <!-- main responsive div -->
-    <div class="uk-width-expand@m uk-margin-right">
-      <!-- pending pranks card -->
-        <div class="uk-panel uk-panel-scrollable uk-margin-bottom">
-          <h4 class="uk-text-bold">Pending Pranks</h4>
-          <table class="uk-table uk-table-striped uk-table-condensed">
-            <thead>
-              <tr>
-                  <th class="uk-text-bold">Pranker</th>
-                  <th class="uk-text-bold">Prank Sent</th>
-                  <th class="uk-text-bold">Member Pranked</th>
-              </tr>
+
+  </div>
+
+  <div class="col-md-9 sm-9 -12 allPranksColumn">
+
+    <div class="row">
+
+      <div class="col-12 pendingPranksColumn">
+        <table class="table table-striped pendingPranksTable">
+          <h3 class="tableHeader">Pending Pranks</h3>
+          <thead class="pendingPranksTableHead">
+            <tr> 
+              <th scope="col">Pranker</th>
+              <th scope="col">Prank Sent</th>
+              <th scope="col">Member Pranked</th>
+            </tr>
           </thead>
           <tbody>
 
-                  {{#each pranks}}
-                    {{#unless complete}}
-                      {{> index/prank-block-pending}}
-                    {{/unless}}
-                  {{/each}}
+            {{#each pranks}}
+              {{#unless complete}}
+                {{> index/prank-block-pending}}
+              {{/unless}}
+            {{/each}}
 
           </tbody>
-      </table>
+        </table>
+      </div>
 
-        </div>
-      <!-- Completed Pranks -->
-        <div class="uk-panel uk-panel-scrollable">
-          <h4 class="uk-text-bold">Most Recent Pranks</h4>
-          <table class="uk-table uk-table-striped uk-table-condensed">
-            <thead>
-              <tr>
-                  <th class="uk-text-bold">Pranker</th>
-                  <th class="uk-text-bold">Prank Sent</th>
-                  <th class="uk-text-bold">Member Pranked</th>
-                  <th class="uk-text-bold">Rate It!</th>
-              </tr>
+    </div>
+
+    <div class="row">
+
+      <div class="col-12 completedPranksColumn">
+        <table class="table table-striped completedPranksTable">
+          <h3 class="tableHeader">Completed Pranks</h3>
+          <thead class="completedPranksTableHead">
+            <tr> 
+              <th scope="col">Pranker</th>
+              <th scope="col">Prank Sent</th>
+              <th scope="col">Member Pranked</th>
+              <th scope="col">Rate it</th>
+            </tr>
           </thead>
           <tbody>
 
-                  {{#each pranks}}
-                    {{#if complete}}
-                      {{> index/prank-block-complete}}
-                    {{/if}}
-                  {{/each}}
-
+            {{#each pranks}}
+              {{#if complete}}
+                {{> index/prank-block-complete}}
+              {{/if}}
+            {{/each}}
+            
           </tbody>
-      </table>
-        </div>
+        </table>
+      </div>
+
     </div>
+
+  </div>
+
 </div>
 
-<!-- Stats div -->
-<div class= "uk-margin-left uk-margin-right">
-  <ul uk-tab>
-      <li><a href="#">Top Rated Prankster</a></li>
-      <li><a href="#">Top Groups</a></li>
-  </ul>
-
-  <ul class="uk-switcher uk-margin">
-      <li>JS top rated pranksters chart</li>
-      <li>JS top rated group chart</li>
-  </ul>
+<div class="modal prankModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Send a Prank!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for='prankCategory'>What type of prank do you want to send?</label>
+        <br>
+        <select class="form-control" id="prankCategory">
+            <option value="0" selected disabled>Select an option</option>
+        </select>
+        <br>
+        <label for='prankTarget'>Who do you want to prank?</label>
+        <br>
+        <select class="form-control" id="prankTarget">
+            <option value="0" selected disabled>Select an option</option>
+        </select>
+    </div>
+    <br>
+    <button class="btn btn-outline-danger submitPrankButton" type="button" id="submitPrank">Send Prank</button>
+    </div>
+  </div>
 </div>
 
 

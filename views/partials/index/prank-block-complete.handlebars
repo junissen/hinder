@@ -1,30 +1,32 @@
 <tr>
-	<td class="uk-text-left uk-width-medium">{{pranker.name}}</td>
-		<td class="uk-text-left">
-			{{#if hinder_info.hinderObject.sound}}
-				<button id="playAudio">Sound was sent<audio id="audioDiv" src={{hinder_info.asset}}></button>
-			{{/if}}
-			{{#if hinder_info.hinderObject.photo}} 
-				<img class='prankPhoto' src={{hinder_info.asset}}> 
-				<p>Image sent</p>
-			{{/if}}
-			{{#if hinder_info.hinderObject.gif}} 
-				<img class='prankPhoto' src={{hinder_info.asset}}> 
-				<p>Gif sent</p>
-			{{/if}}
-			{{#if hinder_info.hinderObject.message}}
-				<p class="hinderMessage">{{hinder_info.asset}}</p> <p> Message sent </p> 
-			{{/if}}
-		</td>
-	<td class="uk-text-left uk-width-medium">{{target.name}}</td>
+	<td>{{pranker.name}}</td>
+	<td>
+		{{#if hinder_info.hinderObject.sound}}
+			<button class="playAudio">Sound was sent<audio class="audioDiv" id="audioDiv" src={{hinder_info.asset}}></button>
+		{{/if}}
+		{{#if hinder_info.hinderObject.photo}} 
+			<img class='prankPhoto' src={{hinder_info.asset}}> 
+			<p>Image sent</p>
+		{{/if}}
+		{{#if hinder_info.hinderObject.gif}} 
+			<img class='prankPhoto' src={{hinder_info.asset}}> 
+			<p>Gif sent</p>
+		{{/if}}
+		{{#if hinder_info.hinderObject.message}}
+			<p class="hinderMessage">{{hinder_info.asset}}</p> <p> Message sent </p> 
+		{{/if}}
+	</td>
+	<td>{{target.name}}</td>
 
-	<td class="uk-text-left">
+	<td>
 		<div class="thumbsUpDiv">
-			<button class="thumbsUp" uk-icon="icon: arrow-up" data-id="{{id}}" data-newthumbsup={{thumbs_up}}></button>
+			<button class="thumbsUp" data-id="{{id}}" data-newthumbsup={{thumbs_up}}><i class="far fa-thumbs-up"></i>
+			</button>
 			{{thumbs_up}}
 		</div>
 		<div class="thumbsDownDiv">
-			<button class = "thumbsDown" uk-icon="icon: arrow-down" data-id="{{id}}" data-newthumbsdown={{thumbs_down}}></button>
+			<button class="thumbsDown" uk-icon="icon: arrow-down" data-id="{{id}}" data-newthumbsdown={{thumbs_down}}><i class="far fa-thumbs-down"></i>
+			</button>
 			{{thumbs_down}}
 		</div>
 	</td>

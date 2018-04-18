@@ -1,0 +1,138 @@
+.homepageTitle {
+    color: white;
+    font-family: 'Sedgwick Ave', cursive;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 20px
+}
+
+.hinderClass {
+	text-align: center;
+}
+
+.navbarButton {
+    padding: 10px 0px 10px 0px;
+    color: white;
+    font-family: 'Sedgwick Ave', cursive;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-outline-danger {
+	border-radius: 10px;
+	border: 3px solid red;
+}
+
+#sendPrankButton {
+    margin-right: 20px;
+    font-size: 20px;
+    color: white
+}
+
+#logoutButton {
+    font-size: 18px;
+    color: white
+}
+
+.indexRow {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.groupCard {
+    background-color: rgba(249, 235, 234, 0.7);
+}
+
+#groupCardTitle {
+    text-align: center;
+    font-family: 'Sedgwick Ave', cursive;
+    margin-top: 10px;
+    border-bottom: 1px solid black;
+}
+
+.memberCards {
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+}
+
+.card-title:hover {
+    color: red
+}
+
+.tableHeader {
+    font-family: 'Sedgwick Ave', cursive;
+    color: white;
+    text-align: center;
+    margin-top: 10px
+}
+
+thead, tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+tbody {
+    display: block;
+    max-height: 500px;
+    overflow-y:scroll;
+}
+
+.pendingPranksColumn {
+    padding: 0px 50px 0px 50px;
+}
+
+.pendingPranksTable {
+    background-color: rgba(249, 235, 234, 0.7);
+}
+
+.pendingPranksTableHead {
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+.completedPranksColumn {
+    padding: 0px 50px 0px 50px;
+}
+
+.completedPranksTable {
+    background-color: rgba(249, 235, 234, 0.7);
+}
+
+.completedPranksTableHead {
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+.prankPhoto {
+    width: 100px;
+}
+
+.thumbsDownDiv {
+    margin-top: 7px;
+}
+
+.thumbsUp:hover,
+.thumbsDown:hover {
+    transform: translateY(-3px);
+}
+
+.prankModal {
+    text-align: center;
+    justify-content: center;
+}
+
+.modal-title {
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+.submitPrankButton {
+    padding: 10px 0px 10px 0px;
+    color: white;
+    font-family: 'Sedgwick Ave', cursive;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 50%;
+    margin-left: 125px;
+    background-color: red;
+}

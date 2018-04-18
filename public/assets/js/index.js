@@ -1,10 +1,13 @@
 $(function() {
 
-	// console.log($('#prankModal').data("pendingPranks"))
+	$('.pendingPrankModal').each(function() {
+		$(this).modal('show')
+	})
 
-	for (var i = 0; i < $('.prankModal').length; i ++) {
-		UIkit.modal($('.prankModal')).show();
-	}
+	$('#sendPrankButton').on("click", function(event) {
+		event.preventDefault();
+		$('.prankModal').modal("show");
+	})
 
 	$('.finishButton').on("click", function(event) {
 		
@@ -68,12 +71,8 @@ $(function() {
 		
 	});
 
-	$('#playAudio').on("click", function(event) {
-		$('#audioDiv')[0].play()
-	});
-
-	$('#playAudioModal').on("click", function(event) {
-		$('#audioDivModal')[0].play()
+	$('.playAudio').on("click", function(event) {
+		$('.audioDiv')[0].play()
 	});
 
 	$('.profileLink').on("click", function(event) {
@@ -83,5 +82,10 @@ $(function() {
 
 	$('#returnHomeButton_Index').on("click", function(event) {
 		location.reload();
-	})	
+	});
+	
+	$('#logoutButton').on("click", function(event) {
+		window.location.href = ('/');
+		return false;
+	})
 })
