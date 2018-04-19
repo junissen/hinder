@@ -1,29 +1,33 @@
-// Require hinder_DB
+// Require sequelize models
 var db = require("../models");
 
 module.exports = function(app) {
 
-	//GET request for a users profile information
+	//GET request for group member profile page
 	app.get('/user:yourid/:otherid?', function(req, res) {
 
-		var userId; 
-
+		// Grabs the user id from the URL
 		var yourId = req.params.yourid;
 
+		var userId; 
 		var profileId;
 
+		// If otherid exists in URL, populates both userId and profileId with that parameter
 		if (req.params.otherid) {
 			userId = req.params.otherid;
 			profileId = req.params.otherid;
 		}
 
+		// If otherid does not exist in URL, populates userId with yourid, and profileId with otherid
 		else {
 			userId = req.params.yourid;
-			profileId = req.params.otherid;
+			profileId = req.params.yourid;
 		}
 
+		// Creates empty indexObject to be populated and returned
 		var indexObject = {};
 
+		// Find user with matching userId from user model
 		db.user.findAll({
 			attributes: ['id', ['user_name', 'name'], 'photo', 'group_id'],
 			where: {
@@ -37,14 +41,17 @@ module.exports = function(app) {
 			}]
 		}).then(function(result) {
 
+			// Creates user object and populates with returned results
 			var user = {
 				'id': result[0].dataValues.id, 
 				'name': result[0].dataValues.name, 
 				'photo': result[0].dataValues.photo, 
 				'group_id': result[0].dataValues.group_id}
 
+			// Adds user object to indexObject
 			indexObject["userInfo"] = user;
 
+			// Creates group object and populates with returned results
 			var group = {
 				'id': result[0].dataValues.group.id,
 				'group_name': result[0].dataValues.group.group_name,
@@ -56,32 +63,37 @@ module.exports = function(app) {
 
 			console.log(groupCategory)
 
+			// Find group category with matching id from group_category model
 			db.group_category.findAll({
 				where: {
 					id: groupCategory
 				}
 			}).then(function(result) {
 
+				// Adds category name to group object
 				group['category'] = result[0].dataValues.category_name;
 
+				// Adds group object to indexObject
 				indexObject["groupInfo"] = group;
 
+				// Finds all users with same group id from user model
 				db.user.findAll({
 					attributes: ['id', ['user_name', 'name'], 'photo'],
 					where: {
 						group_id: indexObject.userInfo.group_id,
-						// id: {
-						// 	[db.Sequelize.Op.ne]: userId
-						// }
 					}	
 				}).then(function(result) {
 
+					// Creates empty array within indexObject
 					indexObject["group_members"] = [];
 
+					// Creates empty object to be populated
 					var groupObject = {}
 
+					// Loops through each returned user
 					for (var i = 0; i < result.length; i ++ ){
 
+						// If returned user matches the current user id, me is true
 						if (result[i].dataValues.id == yourId) {
 							groupObject = {
 								'id': result[i].dataValues.id,
@@ -91,10 +103,12 @@ module.exports = function(app) {
 								'me': true
 							};
 
+							// Resulting object is added to group_members array of indexObject
 							indexObject.group_members.push(groupObject)
 						}
 						
 						else {
+							// If returned user matches the current user id, me is true
 							groupObject = {
 								'id': result[i].dataValues.id,
 								'name': result[i].dataValues.name,
@@ -103,11 +117,13 @@ module.exports = function(app) {
 								'me': false
 							};
 
+							// Resulting object is added to group_members array of indexObject
 							indexObject.group_members.push(groupObject)
 
 						}
 					}
 
+					// Find all hinders with provided group id using hinder model
 					db.hinder.findAll({
 						where: {
 							group_id: indexObject.userInfo.group_id,
@@ -128,15 +144,15 @@ module.exports = function(app) {
 							required: true
 						}
 						]
-						// order: {
-						// 	['created_at', 'DESC']
-						// }
 					}).then(function(result) {
 
+						// Create empty pranks array
 						var pranks = [];
 
-
+						// Loop through each returned prank
 						for (var i = 0; i < result.length; i ++ ) {
+
+							// Create hinder_typeObject and populate
 							var hinder_typeObject = {
 								"sound": false,
 								"photo": false,
@@ -160,6 +176,7 @@ module.exports = function(app) {
 								hinder_typeObject.message= true
 							}
 
+							// Create object and populate
 							var object = {
 								'id': result[i].dataValues.id,
 								'complete': result[i].dataValues.hinder_complete,
@@ -184,27 +201,34 @@ module.exports = function(app) {
 								}
 							}
 
+							// If the pranker id matches the profile id currently viewed, the pranker "user" variable is true
 							if (result[i].dataValues.pranker.id == profileId) {
 								object.pranker["user"] = true
 							}
 
+							// Else the pranker "user" variable is false
 							else {
 								object.pranker["user"] = false
 							}
-
+							
+							// If the target id matches the profile id currently viewed, the target "user" variable is true
 							if (result[i].dataValues.target.id == profileId) {
 								object.target["user"] = true
 							}
 
+							// Else the target "user" variable is false
 							else {
 								object.target["user"] = false
 							}
 
+							// Push the populated object into the pranks array 
 							pranks.push(object)
 						}
 
+					// Add the pranks array to the indexObject
 					indexObject["pranks"] = pranks;
 
+					// Render the profile handlebars and pass in the indexObject
 					res.render("profile", indexObject)
 				
 					});

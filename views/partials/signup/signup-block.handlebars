@@ -1,8 +1,9 @@
-
+{{!-- populates existing groups into drop down menu --}}
 {{#if dataValues.group_name}}
 	<option id="groupid_{{dataValues.id}}" value="{{dataValues.id}}">{{dataValues.group_name}}</option> 
 {{/if}}
 
+{{!-- populates group categories into drop down menu --}}
 {{#if dataValues.category_name}}
 	<option id="groupid_{{dataValues.id}}" value="{{dataValues.id}}">{{dataValues.category_name}}</option> 
 {{/if}}

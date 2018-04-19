@@ -1,31 +1,31 @@
-
-
-// Require hinder_DB
+// Require sequelize models
 var db = require("../models");
 
 module.exports = function(app) {
 
-
-	// Get login page by render login handlebars
+	// GET request for login page
 	app.get("/", function(req, res) {
+		// Render login handlebars
     	res.render('login', {})
       });
 
-	// Get request to check user login name and password when "LOGIN button is pressed"
-
+	// GET request to check user login name and password 
 	app.get("/api/user/check", function(req, res) {
 
 		console.log(req.query);
 
+		// Grab username and password passed into request by the user
 		var user_name = req.query.user_name;
 		var password = req.query.password;
 
+		// Find all users with requested user name from user model
 		db.user.findAll({
 			where: {
 				user_name: user_name
 			}
 		}).then(function(result) {
 
+			// If returns empty array, user does not exist and textObject is return
 			if(result.length == 0) {
 				var textObject = {
 					message: 'No user found'
@@ -33,7 +33,11 @@ module.exports = function(app) {
 				res.json({textObject})
 
 			}
+
+			// If returns array, user does exist
 			else {
+
+				// If password requested matches the password of the found user, userInfo is returned
 				if (result[0].dataValues.password == password) {
 					var userInfo = {
 						userID: result[0].dataValues.id
@@ -43,8 +47,8 @@ module.exports = function(app) {
 
 				}
 
+				// If password requested does not match the password of the found user, textObject is returned
 				else {
-					// console.log("incorrect password for user");
 					var textObject = {
 						message: 'Incorrect password for user'
 					}

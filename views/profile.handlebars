@@ -1,3 +1,4 @@
+{{!-- Profile page header, including Logo, Send Prank Button, Logout, and group member profile page --}}
 <div class="row profileRow">
   <div class="col-md-4 col-sm-12">
     <div class="homepageTitle" >
@@ -24,9 +25,10 @@
   </div>
 </div>
 
-
+{{!-- Content row --}}
 <div class="row profileRow">
 
+  {{!-- Group Members side bar --}}
   <div class="col-md-3 sm-3 -12">
 
     <div class="row">
@@ -48,8 +50,10 @@
 
   </div>
 
+  {{!-- Pranks Column --}}
   <div class="col-md-9 sm-9 -12 allPranksColumn">
 
+    {{!-- Row for pranks received by group member --}}
     <div class="row">
 
       <div class="col-12 pranksReceivedColumn">
@@ -76,6 +80,7 @@
 
     </div>
 
+    {{!-- Row for pranks sent my group member --}}
     <div class="row">
 
       <div class="col-12 pranksSentColumn">
@@ -106,6 +111,7 @@
 
 </div>
 
+{{!-- Send Prank Modal for Profile Page --}}
 <div class="modal prankModalProfile" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -134,11 +140,3 @@
   </div>
 </div>
 
-
-<div id="prankContainer">
-
-  {{#each pending_pranks}}
-    {{> pranks/modal-block}}
-  {{/each}}
-
-</div>
