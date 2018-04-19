@@ -43,8 +43,9 @@ The database stores the users, login info, their group memberships and a record 
 
 Our GET routes populate user profiles and the main pranks page. The POST routes allow new users and groups as well as handle the creation of new pranks. The site content is a mix of static assets and handlebars templates.
 
-To view a sample of the Hinder app without creating a new profile, you can use the following dummy login credentials for a sample group: 
-Username: jimHalpert
+To view a sample of the Hinder app without creating a new profile, you can use the following dummy login credentials for a sample group: \\
+
+Username: jimHalpert\\
 Password: jim1234
 
 =========
