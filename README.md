@@ -37,13 +37,15 @@ This is a node.js application with a mysql backend (hosted on Heroku with JAWS) 
 
 This application is also deployed through Heroku at the following [link](https://junissen-hinder-app.herokuapp.com)
 
-We have a multi-page site with a login, sign up, main page and profile pages. The incoming pranks are displayed in a modal on the main page and the send pranks come from a slide in panel on the main page.
+We have a multi-page site with a login, sign up, main page and profile pages. The incoming pranks are displayed in a modal on the main page and the send pranks come from a modal on both the main page and profile pages.
 
 The database stores the users, login info, their group memberships and a record of the pranks. We used the Seqeulize ORM and have included a seeds file with demo data for starters.
 
-Our GET routes populate user profiles and the main pranks page. The POST routes allow new users and groups as well as handle the creation of new pranks. The site content is a mix of static assets and handlbars templates.
+Our GET routes populate user profiles and the main pranks page. The POST routes allow new users and groups as well as handle the creation of new pranks. The site content is a mix of static assets and handlebars templates.
 
-We are using a graphing plugin (like Chart.js or Raphael) to visualize the information in the database to show popular pranks and highest ranked Prankers.
+To view a sample of the Hinder app without creating a new profile, you can use the following dummy login credentials for a sample group: 
+Username: jimHalpert
+Password: jim1234
 
 =========
 
