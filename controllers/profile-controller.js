@@ -30,7 +30,7 @@ module.exports = function(app) {
 				id: userId
 			},
 			include: [{
-				attributes: [['id', 'group_id'], 'group_name', 'bio', 'photo', 'category_id'],
+				attributes: ['id', 'group_name', 'bio', 'photo', 'category_id'],
 				model: db.group,
 				as: 'group',
 				required: true
@@ -65,8 +65,6 @@ module.exports = function(app) {
 				group['category'] = result[0].dataValues.category_name;
 
 				indexObject["groupInfo"] = group;
-
-				indexObject["groupInfo"] = group
 
 				db.user.findAll({
 					attributes: ['id', ['user_name', 'name'], 'photo'],

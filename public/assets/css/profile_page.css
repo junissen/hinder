@@ -24,7 +24,7 @@
 	border: 3px solid red;
 }
 
-#sendPrankButton {
+#sendPrankButtonProfile {
     margin-right: 20px;
     font-size: 20px;
     color: white
@@ -57,7 +57,7 @@
     background-color: rgba(249, 235, 234, 0.7);
 }
 
-#groupCardTitle {
+#groupCardTitleProfile {
     text-align: center;
     font-family: 'Sedgwick Ave', cursive;
     margin-top: 10px;
@@ -130,7 +130,7 @@ tbody {
     transform: translateY(-3px);
 }
 
-.prankModal {
+.prankModalProfile {
     text-align: center;
     justify-content: center;
 }
@@ -139,7 +139,7 @@ tbody {
     font-family: 'Sedgwick Ave', cursive;
 }
 
-.submitPrankButton {
+.submitPrankButtonProfile {
     padding: 10px 0px 10px 0px;
     color: white;
     font-family: 'Sedgwick Ave', cursive;

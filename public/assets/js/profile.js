@@ -14,6 +14,12 @@ $(function() {
 		var userId = userPath[4];
 		window.location.href = "/home/" + userId;
 		return false;
-	})	
+	});
+
+	$('#sendPrankButtonProfile').on("click", function(event) {
+		event.preventDefault();
+		$('.prankModalProfile').modal("show");
+	})
+
 
 })

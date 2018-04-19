@@ -18,7 +18,7 @@
   </div>
   <div class="col-md-4 col-sm-12">
     <form class="form-inline navbarButton">
-        <button class="btn btn-outline-danger" type="button" id="sendPrankButton">Send prank!</button>
+        <button class="btn btn-outline-danger" type="button" id="sendPrankButtonProfile">Send prank!</button>
         <button class="btn btn-sm btn-outline-danger" type="button" id="logoutButton">Logout</button>
     </form>
   </div>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="col-10 groupCard">
-        <h5 id="groupCardTitle" data-group="{{groupInfo.group_id}}">{{groupInfo.group_name}}</h5>
+        <h5 id="groupCardTitleProfile" data-group="{{groupInfo.id}}">{{groupInfo.group_name}}</h5>
         <div class="memberCards">
           {{#each group_members}}
             {{> index/index-block}}
@@ -106,7 +106,7 @@
 
 </div>
 
-<div class="modal prankModal" tabindex="-1" role="dialog">
+<div class="modal prankModalProfile" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -118,18 +118,18 @@
       <div class="modal-body">
         <label for='prankCategory'>What type of prank do you want to send?</label>
         <br>
-        <select class="form-control" id="prankCategory">
-            <option value="0" selected disabled>Select an option</option>
+        <select class="form-control" id="prankCategoryProfile">
+            
         </select>
         <br>
         <label for='prankTarget'>Who do you want to prank?</label>
         <br>
-        <select class="form-control" id="prankTarget">
-            <option value="0" selected disabled>Select an option</option>
+        <select class="form-control" id="prankTargetProfile">
+            
         </select>
     </div>
     <br>
-    <button class="btn btn-outline-danger submitPrankButton" type="button" id="submitPrank">Send Prank</button>
+    <button class="btn btn-outline-danger submitPrankButtonProfile" type="button" id="submitPrankProfile">Send Prank</button>
     </div>
   </div>
 </div>
